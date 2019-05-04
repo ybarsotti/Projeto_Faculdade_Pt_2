@@ -1,0 +1,133 @@
+@import url(jogar-admin.css);
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+
+.questao{
+    color: rgb(0, 45, 248);
+    font-size: 2.5rem;
+    width: 80%;
+    border: 3px solid rgb(49, 69, 156);
+}
+
+.temporizador{
+    width: 100%;
+}
+
+.tempo{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    border: 3px solid black;
+    text-align: center;
+    vertical-align: middle;
+    background: rgb(72, 223, 80);
+}
+
+.row-respostas{
+    height: 18rem;
+}
+
+@media screen and (min-width: 992px){
+    .row-respostas{
+        height: 16rem ;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .row-respostas{
+        height: 14rem;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .row-respostas{
+        height: 12rem ;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .row-respostas{
+        height: 10rem ;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .row-respostas{
+        height: 8rem ;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .row-respostas{
+        height: 6rem ;
+    }
+}
+
+
+.tempo span{
+    color: #fff;
+    font-size: 3.5rem;
+    line-height: 100px;
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 2px 0px 0px #000, 
+                 -2px 0px 0px #000, 
+                 0px 2px 0px #000, 
+                 0px -2px 0px #000;
+}
+
+
+
+.col-resposta{
+    text-align: center;
+    cursor: pointer;
+    height: 100%;
+}
+
+.resposta{
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+/* marcar opcao*/
+
+input[type='radio']{
+    display: none;
+}
+
+input[type='radio']:checked + .col-resposta{
+    border: 3px solid rgb(0, 255, 0);
+}
+
+
+.col-resposta-1{
+    background: rgb(128,60,216);
+}
+
+.col-resposta-2{
+    background: rgb(111,214,59);
+}
+
+.col-resposta-3{
+    background: rgb(59,77,211);
+}
+
+.col-resposta-4{
+    background: rgb(214,59,101);
+}
+
+.col-resposta-1:hover{
+    background: rgba(128,60,216,.8);
+}
+
+.col-resposta-2:hover{
+    background: rgba(111,214,59,.8);
+}
+
+.col-resposta-3:hover{
+    background: rgba(59,77,211,.8);
+}
+
+.col-resposta-4:hover{
+    background: rgba(214,59,101,.8);
+}
+

@@ -1,0 +1,81 @@
+@import url(main.css);
+
+.principal{
+    min-height: 100vh !important; 
+    background: #703bd3;
+    transition-duration: 1s;
+}
+
+h2{
+    font-family: 'Alfa Slab One', cursive;
+    color: #fff;
+}
+
+
+.caixa-form{
+    height: 95vh !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input[type='text'], input[type='submit']{
+    width: 50%;
+    float: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.erro{
+    outline: 2px solid #f70000 !important;
+    outline-style: inset;
+    background: #d69d9d;
+    animation: balanca 0.3s;
+}
+
+input[type='submit']{
+    background: #5f5c64;
+    color: #fff;
+    border: none;
+}
+
+input[type='submit']:hover{
+    animation: balanca .3s;
+}
+
+input[type='submit']:focus{
+    background: #aaa5b1;
+}
+
+
+@keyframes balanca{
+    0%{
+        transform: translateX(-5%);
+    }
+    25%{
+        transform: translateX(5%);
+    }
+    50%{
+        transform: translateX(-5%);
+    }
+    75%{
+        transform: translateX(5%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+
+
+/* Loader */
+
+body{
+    background:#f87777;
+}
+
+.loader{
+    position: fixed;
+    top:50%;
+    left:50%;
+}

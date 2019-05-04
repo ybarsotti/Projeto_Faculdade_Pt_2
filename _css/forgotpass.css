@@ -1,0 +1,22 @@
+@import url(main.css);
+@import url(cadastro.css);
+
+.navbar-brand{
+    color: #fff !important;
+}
+
+.logoV{
+    color: #fff !important;
+}
+
+.caixa-form{
+    height: 80vh !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input[type='submit']:hover{
+    background: rgb(204, 209, 209);
+    color: #fff;
+}

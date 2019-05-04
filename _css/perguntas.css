@@ -1,0 +1,51 @@
+@import url(main.css);
+@import url(painel.css);
+
+@import url('https://fonts.googleapis.com/css?family=Jua');
+
+
+.div-titulo{
+    font-family: Jua, 'monotype corsiva';
+}
+
+.btn-inner-pergunta{
+    color: #000000;
+}
+
+.opcao-correta{
+    transform: scale(1.5);
+    margin: 1rem 0 0 .4rem;
+    cursor: pointer;
+}
+
+.form-group input[type='text']{
+    border: none;
+    border-bottom: 1px solid gray;
+    background-color: rgb(254, 254, 254);
+    border-radius: 2px;
+}
+
+.form-group select{
+    background-color: rgb(254, 254, 254);
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+label{
+    font-family: Jua, 'monotype corsiva';
+    font-size: 1.3rem;
+}
+
+input[type='radio']:checked + label{
+    color: rgb(75, 219, 75);
+}
+
+input[type='radio']{
+    display: none;
+}
+
+.btn-criar-pergunta{
+    font-family: Jua, 'monotype corsiva';
+    font-size: 1.5rem;
+    width: 10%;
+}

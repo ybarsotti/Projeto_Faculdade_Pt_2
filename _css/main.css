@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Lemonada');
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
+
+:root{
+    --cor: #803cd8;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background: #ffffff;
+}
+/*-- Barra de navegacao --*/
+.navbar .navbar-brand{
+    font-family: 'Nobile', Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cor);
+}
+
+
+.nav-link,
+.btn-login{
+    color: var(--cor);
+}
+
+.btn-login{
+    font-family: 'Nobile', Helvetica, Arial, sans-serif;
+}
+
+.cod-jogar{
+    font-weight: 700;
+    animation: pisca 1s alternate infinite;
+}
+
+.btn-logar{
+    background: var(--cor);
+}
+
+.btn-logar:hover{
+    background: rgb(59, 5, 141) !important;
+}
+
+.hamburg{
+    background: rgb(112, 30, 189) !important;
+}
+
+
+.nav-principal{
+    background-color: #ffffff !important;
+    border-bottom: 5px solid rgb(163, 101, 221);
+}
+
+.collapse, .collapse .btn{
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.logoV{
+    color: #8DB4D0;
+}
+
+.log{
+    font-family: 'Lemonada', cursive; 
+}
+
+.log #btnMenu{
+    text-decoration: none;
+}
+
+.criarConta{
+    font-size: 1.3rem;
+}
+
+.rmbpsw {
+    font-size: 0.9rem;
+}
+
+.rmbpsw > a{
+    color: var(--cor);
+    text-decoration: none;
+}
+
+.btn-cadastro{
+    background: rgb(97, 65, 145);
+    border: none;
+}
+
+.btn-cadastro:hover{
+    background: rgb(59, 5, 141);
+}
+/*-- fim da barra de navegacao --*/
+
+/*-- Conteudo principal --*/
+
+/*-- Linha 1 --*/
+
+.fila1{
+    background: #803cd8;
+    box-shadow: 1.5px 1.5px 10px rgb(117, 117, 117);
+    min-height: 60vh;
+    border-bottom-left-radius: 250px;
+    transition-duration: 1s;
+}
+
+@media screen and (min-width: 900px){
+.fundo{
+    background: url(../_img/imagem-principal.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40vh;
+    width: 40%;
+    box-shadow: 1px 1px 3px rgb(179, 148, 236);
+}
+}
+
+
+@media screen and (max-width: 899px){
+    .fundo{
+        display: none;
+    }
+}
+
+.texto-apresentacao{
+    color: white;
+    text-shadow: 5px 3px 0 rgba(65, 65, 65, 0.5);
+    font-family: 'Alfa Slab One', cursive;
+}
+
+.cad{
+    color: white !important;
+}
+
+/*-- Fim da Linha 1 --*/
+
+/*-- Linha 2 --*/
+
+.projeto-container{
+    min-height: 30vh;
+}
+
+.projeto-inner > h1{
+    text-shadow: 2px 3px 0 rgba(65, 65, 65, 0.5);
+    font-family: sans-serif;
+}
+
+/*-- Fim da Linha 2 --*/
+
+/*-- Footer --*/
+
+.fab{
+    color: rgb(188, 188, 202);
+}
+
+.links:hover{
+    font-size: 1.5rem;
+}
+
+.links{
+    font-size: 2rem;
+    transition: 0.5s;
+}
+
+i{
+    padding-right: 0.5rem;
+}
+
+/*-- Fim do Footer --*/
+
+
+/*-- Animacoes --*/
+
+
+@keyframes pisca{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}

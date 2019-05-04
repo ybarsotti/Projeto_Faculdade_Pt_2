@@ -1,0 +1,19 @@
+@import url(main.css);
+@import url(painel.css);
+
+@import url('https://fonts.googleapis.com/css?family=Jua');
+
+.form-group{
+    font-family: 'Jua', sans-serif;
+    font-size: 1.5rem;
+}
+
+.botao-form{
+    width: 10rem;
+    font-size: 1.5rem;
+    padding: 0 2rem;
+}
+
+.area-texto{
+    width: 100%; 
+}

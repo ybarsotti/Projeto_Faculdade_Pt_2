@@ -1,0 +1,93 @@
+@import url(main.css);
+
+html{
+    background: rgb(255, 255, 255);
+}
+
+.navbar-brand,
+.logoV{
+    color: #fff !important;
+}
+
+.btn-voltar{
+    height: 10%;
+    background: rgba(219, 168, 168, 0.1);
+    border: none;
+    display: none;
+}
+
+.botao-logar{
+    background: #fff;
+    border: 2px solid gray;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    padding: 0.4rem 1.5rem;
+    text-align: center;
+    box-shadow: 1px 2px 0 gray;
+}
+
+.botao-logar:hover{
+    box-shadow: 0px 1px 0 gray;
+    transform: scale(0.95);
+}
+
+.container-principal{
+    background: rgb(255, 255, 255);
+}
+
+h2{
+    font-size: 3rem;
+    color: rgb(145, 164, 167);
+    font-family: 'Alfa Slab One', cursive;
+    text-shadow: 1px 2px 0 rgb(153, 152, 152);
+}
+
+
+.btn-group{
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: row;
+    height: 6rem;
+    border: 2px solid #fff;
+    box-shadow: 1px 2px 0 rgb(189, 188, 188);
+}
+
+.botao-tipo{
+    background: rgb(141, 231, 238);
+    color: #fff;
+    font-size: 2rem;
+}
+
+.botao-tipo:hover{
+    background: rgb(64, 133, 212);
+    transform: scale(1.1);
+    transition: 0.5s;
+    color: #fff;
+}
+
+.resposta-criacao{
+    font-size: 1.5rem;
+    display: block;
+}
+
+/* Fomulario */
+
+.form-aluno{
+    display: none;
+}
+
+.form-aluno > button{
+    width: 15%;
+    height: 2rem;
+    background: rgb(218, 215, 215);
+    box-shadow: 1.5px 2px rgb(163, 163, 163);
+    border: none;
+    color: #fff;
+    
+}
+
+.form-aluno > button:hover{
+    transform: scale(.95);
+    box-shadow: 1px 1px rgb(163, 163, 163);
+}

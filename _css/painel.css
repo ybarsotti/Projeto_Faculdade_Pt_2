@@ -1,0 +1,111 @@
+@import url(main.css);
+@import url('https://fonts.googleapis.com/css?family=Jua');
+
+.navbar-brand, 
+.logoV{
+    color: #fff !important ;
+}
+
+.navegacao{
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 5px solid gray;
+}
+
+.botao-perfil{
+    color: azure;
+    background: none;
+    border: none;
+    margin-left: 2rem;
+}
+
+.icone{
+    transform: scale(1.6);
+    margin-left: 1.5rem;
+    color: #fff;
+}
+
+.botao-criar{
+    display: block;
+    background: rgb(73, 70, 70);
+    color: #fff;
+    width: 8rem;
+    font-size: 1.5rem;
+    box-shadow: 2px 1px 1px rgb(109, 108, 108);
+    outline: none;
+}
+
+.botao-criar:active{
+    animation: clicar .2s ease-in-out;
+}
+
+.icone:hover{
+    color: rgb(158, 158, 158);
+    transform: scale(2);
+    transition-duration: .2s;
+}
+
+div i{
+    width: .2rem;
+    padding-right: 1rem;
+}
+
+.opcoes-perfil i{
+    padding-right: 1rem;
+}
+
+.texto-perfil{
+    width: 100%;
+    color: rgb(161, 161, 161);
+    text-align: center;
+    font-weight: bold;
+}
+
+.quantidade-questionarios, .perguntas, .botao-criar{
+    font-family: 'Jua', sans-serif;
+}
+
+.perguntas{
+    display: table;
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+.perguntas-inner{
+    width: 20rem;
+    height: 5rem;
+    font-size: 2rem;
+    background: rgb(241, 241, 241);
+    box-shadow: 1px 3px 5px gray;
+}
+
+.perguntas-inner a{
+    color: #000;
+    text-decoration: none;
+}
+
+.btn-editar:hover{
+    color: rgb(209, 219, 69);
+}
+
+.btn-jogar:hover{
+    color: rgb(110, 214, 89);
+}
+
+.btn-excluir:hover{
+    color: rgb(238, 71, 71);
+}
+
+.btn-inner-pergunta{
+    width: 1.2rem;
+}
+
+/* Animacao */
+
+@keyframes clicar{
+    0%{
+        transform: scale(.9);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
