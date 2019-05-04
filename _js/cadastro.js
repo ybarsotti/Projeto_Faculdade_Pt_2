@@ -5,8 +5,8 @@ const cadastroAluno = () =>{
     /* aparece o menu*/
     document.querySelector('.btn-voltar').style.display = 'block';
     document.querySelector('.form-aluno').style.display = 'block';
-    /* Abaixo o link de cadastro muda para aluno */
-    // document.querySelector('.form-aluno').action = 'cadastro.php';
+    /* Abaixo a informacao enviada do tipo de usuario para aluno */
+    document.querySelector('#tipoUsuario').value = '1';
 
 }
 
@@ -19,8 +19,8 @@ const cadastroProf = () =>{
     document.querySelector('.btn-voltar').style.display = 'block';
     document.querySelector('.form-aluno').style.display = 'block';
 
-    /* Abaixo o link de cadastro muda para professor */
-   // document.querySelector('.form-aluno').action = 'cadastro.php';
+    /* Abaixo a informacao enviada do tipo de usuario para professor */
+   document.querySelector('#tipoUsuario').value = '2';
 }
 
 const voltamenu = () =>{
