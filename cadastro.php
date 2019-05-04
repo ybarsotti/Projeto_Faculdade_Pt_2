@@ -10,20 +10,44 @@
 
 <?php 
 
-$user = $_POST['username'];
-$email = $_POST['email'];
-$pass = $_POST['pass'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $userpass = $_POST['pass'];
 
-echo "<script> 
-        alert('Conta criada com sucesso');
-        window.history.go(-1);
-      </script>";
+    $host = 'localhost';
+    $db = 'metodologico';
+    $user = 'root';
+    $pass = '';
+    
+    $con = mysqli_connect($host, $user, $pass, $db);
+
+    $select = "SELECT * FROM `user` WHERE userName = '" . $username . "' or userMail = '" . $email . "'";
+    $sql = "INSERT INTO `user`(`userName`, `userPass`, `userMail`) VALUES ('". $username . "' , '" . $userpass . "' , '" . $email . "')";
+
+    if(!$con){
+      die('Erro na conexao!' . mysqli_connect_error());
+    }
+
+    $select = mysqli_query($con, $select);
+    $row = mysqli_fetch_assoc($select);
+    if ($row> 0){
+      echo 'Usuario ja cadastrado';
+    } else{
+      mysqli_query($con, $sql);
+      echo 'Cadastrado com sucesso';
+    }
+    mysqli_free_result($select);
+
+    mysqli_close($con);
 
 
-//header('location: cadastro.html?') or die('Falha ao cadastrar');
 
 
 ?>
+
+<script>
+  setTimeout(function () {window.history.go(-1);}, 1500);
+</script>
 
 </body>
 </html>
