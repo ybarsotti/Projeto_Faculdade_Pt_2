@@ -16,9 +16,9 @@
     $usertype = $_POST['tipo'];
 
     $host = 'localhost';
-    $db = 'metodologico';
-    $user = 'root';
-    $pass = '';
+    $db = 'id9155796_metodologico';
+    $user = 'id9155796_barsotti';
+    $pass = 'metodologico';
     
     $con = mysqli_connect($host, $user, $pass, $db);
 

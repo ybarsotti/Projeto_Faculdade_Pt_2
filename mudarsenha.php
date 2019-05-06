@@ -29,9 +29,9 @@
   $novasenha = $_POST['psw'];
 
   $host = 'localhost';
-  $db = 'metodologico';
-  $user = 'root';
-  $pass = '';
+  $db = 'id9155796_metodologico';
+  $user = 'id9155796_barsotti';
+  $pass = 'metodologico';
 
   $con = mysqli_connect($host, $user, $pass, $db) or die('Erro com a conexao com o banco !' . mysqli_error());
 
