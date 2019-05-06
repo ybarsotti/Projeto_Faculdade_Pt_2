@@ -26,7 +26,7 @@
 
     <nav class="container-fluid navbar navbar-expand-lg navbar-fixed-top nav-principal">
         <nav class="container navbar navbar-expand-lg navbar-fixed-top nav-inner">
-            <a class="navbar-brand" href="index.html">Metodo<span class="logoV">LÓGICO</span></a>
+            <a class="navbar-brand" href="index.php">Metodo<span class="logoV">LÓGICO</span></a>
 
             <button class="navbar-toggler collapsed navbar-light bg-light hamburg" type="button" data-target="#menubtn" data-toggle="collapse" aria-expanded="false">
                     <span class="navbar-toggler-icon"></span>
@@ -46,34 +46,54 @@
                     </ul>
 
                     <!-- Acesso de Login / Cadastro -->
-
-                    <ul class="nav navbar-nav log">
+    <?php 
+        session_start();
+        if(isset($_SESSION['token'])) {
+            echo ' <div class="dropdown">
+            <button class="botao-perfil" type="button" id="menu-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-cog icone"></i> 
+            </button>
+            <div class="dropdown-menu opcoes-perfil" aria-labelledby="menu-dropdown">
+                <div class="texto-perfil text-center">'. $_SESSION['login'] .'</div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="painel.php"><i class="fas fa-th-list icone"></i> Painel</a> 
+                <a class="dropdown-item" href="editar-perfil.php"><i class="far fa-user"></i> Editar Perfil</a>
+                <a class="dropdown-item" href="mudar-senha.php"><i class="fas fa-key"></i> Mudar senha</a>
+                <div class="dropdown-divider"></div> 
+                <a class="dropdown-item" href="logout.php?token='. $_SESSION['token'] .'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>
+            </div>
+        </div>';
+        }else{
+                echo   '<ul class="nav navbar-nav log">
                         <li class="dropdown">
                             <button type="button" id="btnMenu" data-toggle="dropdown" class="btn btn-link dropdown-toggle px-3 btn-login">Fazer Login<span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                                     <li class="px-3 py-2">
-                                        <form class="form" role="form" action='logar.php' method="POST">
+                                        <form class="form" action="logar.php" method="POST">
                                         <div class="form-group">
-                                            <input id="usr" placeholder="Usuario" class="form-control form-control-sm" type="text" required>
+                                            <input id="usr" name="userName" placeholder="Usuario" class="form-control form-control-sm" type="text" required>
                                         </div>
                                         <div class="form-group">
-                                            <input id="psw" placeholder="Senha" class="form-control form-control-sm" type="password" required>
+                                            <input id="psw" name="userPass" placeholder="Senha" class="form-control form-control-sm" type="password" required>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block btn-logar">Logar</button>
+                                            <input type="submit" class="btn btn-primary btn-block btn-logar" value="Logar">
                                         </div>
                                         <div class="form-group text-center rmbpsw">
-                                            <a href="forgotpass.html">Esqueceu a senha?</a>
+                                            <a href="forgot-pass.html">Esqueceu a senha?</a>
                                         </div>
                                         </form>
                                     </li>
                                 </ul>
                         </li>
                     </ul>
-                   <a href="cadastro.html" target="_blank"><button class="btn btn-primary btn-cadastro px-4 mx-1 newacc">Cadastro</button></a>
-            </div>
+                   <a href="cadastro.html" target="_blank"><button class="btn btn-primary btn-cadastro px-4 mx-1 newacc">Cadastro</button></a>';
+                }
+                ?>  
+              </div>
         </nav>
     </nav>
+         
         <!-- Fim da barra de Navegacao -->
 
         <!-- Conteudo principal -->

@@ -12,7 +12,22 @@
     <link rel="icon" type="image/jpg" href="https://img.icons8.com/metro/26/000000/dice.png" />
 </head>
 <body>
+<?PHP
+session_start();
 
+//Caso o usuário não esteja autenticado, limpa os dados e redireciona
+if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
+	//Destrói
+	session_destroy();
+
+	//Limpa
+	unset ($_SESSION['login']);
+	unset ($_SESSION['senha']);
+	
+	//Redireciona para a página de autenticação
+	header('location:index.php');
+}
+?>
 <noscript>
     <div class="alert alert-danger" role="alert">
         <h4 class="alert-heading">Ah não!</h4>
@@ -25,21 +40,23 @@
     <!-- Navegacao -->
 
         <nav class="navbar navbar-expand navegacao">
-            <a class="navbar-brand" href="index.html">Metodo<span class="logoV">LÓGICO</span></a>
+            <a class="navbar-brand" href="index.php">Metodo<span class="logoV">LÓGICO</span></a>
                 <div class="nav-item">
-                    <a href="painel.html"><i class="fas fa-th-list icone"></i></a>
+                    <a href="painel.php"><i class="fas fa-th-list icone"></i></a>
                 </div>
                 <div class="dropdown">
                     <button class="botao-perfil" type="button" id="menu-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-cog icone"></i> 
                     </button>
                     <div class="dropdown-menu opcoes-perfil" aria-labelledby="menu-dropdown">
-                        <div class="texto-perfil">{User}</div>
-                        <div class="dropdown-divider"></div> 
-                      <a class="dropdown-item" href="editar-perfil.html"><i class="far fa-user"></i> Editar Perfil</a>
-                      <a class="dropdown-item" href="mudar-senha.html"><i class="fas fa-key"></i> Mudar senha</a>
+                    <?php echo '<div class="texto-perfil text-center">'. $_SESSION['login'] .'</div>';?>
+                        <div class="dropdown-divider"></div>    
+                      <a class="dropdown-item" href="editar-perfil.php"><i class="far fa-user"></i> Editar Perfil</a>
+                      <a class="dropdown-item" href="mudar-senha.php"><i class="fas fa-key"></i> Mudar senha</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Deslogar</a>
+                      <?php 
+                        echo '<a class="dropdown-item" href="logout.php?token='.md5(session_id()).'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>';
+                      ?>
                     </div>
                 </div>
         </nav>

@@ -8,15 +8,44 @@
 </head>
 <body>
     <?php
-        echo "
-        Logado
+        
+        $login = $_POST['userName'];
+        $senha = $_POST['userPass'];
 
-        <script> 
-        setTimeout(function() {
-            window.location.href = 'painel.html';
-        }, 1500);
-        </script>";
+        $host = 'localhost';
+        $db = 'metodologico';
+        $user = 'root';
+        $pass = '';
 
+        $con = mysqli_connect($host, $user, $pass, $db) or die('Erro com a conexao com o banco !' . mysqli_error());
+
+        $sql = "SELECT COUNT(*) FROM `user` WHERE userName = '$login' AND userPass = '$senha'";
+
+        $result = mysqli_query($con, $sql) or die('Erro na selecao da tabela ! : ' . mysqli_error($con));
+
+        $nota = 'Usuario ou senha incorretos';
+
+        $qte = mysqli_fetch_array($result);
+        if ($qte[0] != 0){
+            if (!isset($_SESSION)) {//Verificar se a sessão não já está aberta.
+                session_start();
+                $_SESSION['login'] = $login;
+                $_SESSION['senha'] = $senha;
+                $_SESSION['token'] = md5(session_id());
+                //$_SESSION['logado'] = TRUE;
+                header('location: index.php');
+                exit();
+            }else{
+                session_destroy();
+            }
+              
+        }
+        else {
+            header('location: index.php');
+            exit();
+        }
+
+        mysqli_close($con);
     ?>
 </body>
 </html>

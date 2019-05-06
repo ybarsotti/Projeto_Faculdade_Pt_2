@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Profile</title>
 </head>
 <body>
-<?php
+    
+    <?php
         session_start();
 
         //Caso o usuário não esteja autenticado, limpa os dados e redireciona
@@ -54,6 +55,25 @@
             }
 
         } 
+
+        if($novousuario == '' and $novoemail != ''){
+            $update = "UPDATE `user` SET userMail = '$novoemail' WHERE userName = " . $_SESSION['login'] . "'";
+            $resultado = mysqli_query($con, $update) or die('Falha email: ' . mysqli_error($con));
+            if($resultado != FALSE){
+                echo '<script> alert("E-mail alterado com sucesso");
+                window.history.go(-1); </script>';
+            }
+        }
+
+        if($novousuario != '' and $novoemail != ''){
+            $update = "UPDATE `user` SET userMail = '$novoemail' , userName = '$novousuario' WHERE userName = '" . $_SESSION['login'] ."'"  ;
+            $resultado = mysqli_query($con, $update) or die('Falha user/mail: ' . mysqli_error($con));
+            if($resultado != FALSE){
+                $_SESSION['login'] = $novousuario;
+                echo '<script> alert("Usuario e E-mail alterado com sucesso");
+                window.history.go(-1); </script>';
+            }
+        }
 
     }
 

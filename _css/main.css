@@ -94,6 +94,26 @@ body{
 }
 /*-- fim da barra de navegacao --*/
 
+/* -- Menu do perfil--*/
+
+.botao-perfil{
+    color: var(--cor);
+    background: none;
+    border: none;
+    margin-left: 2rem;
+}
+
+.opcoes-perfil i{
+    padding-right: 1rem;
+}
+
+.texto-perfil{
+    width: 100%;
+    color: rgb(161, 161, 161);
+    font-weight: bold;
+}
+
+
 /*-- Conteudo principal --*/
 
 /*-- Linha 1 --*/
