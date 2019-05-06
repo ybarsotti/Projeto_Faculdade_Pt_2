@@ -4,5 +4,8 @@ const validar = () =>{
 
     if (email == '' || email == NaN){
         alert('Digite um email válido');
+        return false;
+    } else{
+        return true;
     }
 }
