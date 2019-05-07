@@ -1,3 +1,36 @@
+<?php  
+session_start();
+//Caso o usuário não esteja autenticado, limpa os dados e redireciona
+if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
+	//Destrói
+	session_destroy();
+
+	//Limpa
+	unset ($_SESSION['login']);
+	unset ($_SESSION['senha']);
+	
+	//Redireciona para a página de autenticação
+  echo '<script> window.history.go(-1); </script>';
+}
+/*
+    $host = 'localhost';  
+    $db = 'id9155796_metodologico';
+    $user = 'id9155796_barsotti';
+    $pass = 'metodologico';
+    
+    $con = mysqli_connect($host, $user, $pass, $db);
+
+    $select = "SELECT * FROM `user` WHERE userName = '" . $username . "' or userMail = '" . $email . "'";
+    $sql = "INSERT INTO `user`(`userName`, `userPass`, `userMail`, `userType`) VALUES ('". $username . "', '" . $userpass . "' , '" . $email . "', " . $usertype . "  )";
+
+    if(!$con){
+      die('Erro na conexao!' . mysqli_connect_error());
+    }
+
+    $select = mysqli_query($con, $select) or die('Erro de query: ' . mysqli_error());
+    $row = mysqli_fetch_assoc($select);
+*/
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,22 +45,7 @@
     <link rel="icon" type="image/jpg" href="https://img.icons8.com/metro/26/000000/dice.png" />
 </head>
 <body>
-<?PHP
-session_start();
 
-//Caso o usuário não esteja autenticado, limpa os dados e redireciona
-if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
-	//Destrói
-	session_destroy();
-
-	//Limpa
-	unset ($_SESSION['login']);
-	unset ($_SESSION['senha']);
-	
-	//Redireciona para a página de autenticação
-	header('location:index.php');
-}
-?>
 <noscript>
     <div class="alert alert-danger" role="alert">
         <h4 class="alert-heading">Ah não!</h4>
@@ -68,7 +86,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
         <div class="row">
             <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-2 ff">
                 <h1 class="text-center quantidade-questionarios"></h1>
-                <div class="col col-lg-8 col-md-8 col-sm-8 mx-auto mt-2 btnn"><a href="criarquestao.html" class="btn mx-auto botao-criar">Criar</a></div>
+                <div class="col col-lg-8 col-md-8 col-sm-8 mx-auto mt-2 btnn"><a href="respostas.php" class="btn mx-auto botao-criar">Criar</a></div>
             </div>
             <div class="col mx-auto col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
                 <table class="perguntas">

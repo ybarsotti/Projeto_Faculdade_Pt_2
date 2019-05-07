@@ -1,3 +1,4 @@
+<?php  session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,21 +28,18 @@
 
         $qte = mysqli_fetch_array($result);
         if ($qte[0] != 0){
-            if (!isset($_SESSION)) {//Verificar se a sessão não já está aberta.
-                session_start();
                 $_SESSION['login'] = $login;
                 $_SESSION['senha'] = $senha;
                 $_SESSION['token'] = md5(session_id());
-                //$_SESSION['logado'] = TRUE;
-                header('location: index.php');
+                $userid = mysqli_query($con, "SELECT `userID` from `user` WHERE `userName` = '" . $login . "'") or die('Erro SQL:' . mysqli_error($con));
+                $userid = mysqli_fetch_array($userid);
+                $_SESSION['userId'] = $userid[0];
+                echo '<script> window.history.go(-1); </script>';
                 exit();
-            }else{
-                session_destroy();
-            }
               
         }
         else {
-            header('location: index.php');
+            echo '<script> window.history.go(-1); </script>';
             exit();
         }
 

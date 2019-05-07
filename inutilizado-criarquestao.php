@@ -1,3 +1,18 @@
+<?php  
+session_start();
+//Caso o usuário não esteja autenticado, limpa os dados e redireciona
+if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
+	//Destrói
+	session_destroy();
+
+	//Limpa
+	unset ($_SESSION['login']);
+	unset ($_SESSION['senha']);
+	
+	//Redireciona para a página de autenticação
+  echo '<script> window.history.go(-1); </script>';
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,21 +40,21 @@
     <!-- Navegacao -->
 
         <nav class="navbar navbar-expand navegacao">
-            <a class="navbar-brand" href="index.html">Metodo<span class="logoV">LÓGICO</span></a>
+            <a class="navbar-brand" href="index.php">Metodo<span class="logoV">LÓGICO</span></a>
                 <div class="nav-item">
-                    <a href="painel.html"><i class="fas fa-th-list icone"></i></a>
+                    <a href="painel.php"><i class="fas fa-th-list icone"></i></a>
                 </div>
                 <div class="dropdown">
                     <button class="botao-perfil" type="button" id="menu-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-cog icone"></i> 
                     </button>
                     <div class="dropdown-menu opcoes-perfil" aria-labelledby="menu-dropdown">
-                        <div class="texto-perfil">{User}</div>
+                    <?php echo '<div class="texto-perfil text-center">'. $_SESSION['login'] .'</div>';?>
                         <div class="dropdown-divider"></div> 
-                      <a class="dropdown-item" href="#"><i class="far fa-user"></i> Editar Perfil</a>
-                      <a class="dropdown-item" href="#"><i class="fas fa-key"></i> Mudar senha</a>
+                      <a class="dropdown-item" href="editar-perfil.php"><i class="far fa-user"></i> Editar Perfil</a>
+                      <a class="dropdown-item" href="mudar-senha.php"><i class="fas fa-key"></i> Mudar senha</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Deslogar</a>
+                      <?php echo '<a class="dropdown-item" href="logout.php?token='. $_SESSION['token'] .'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>'; ?>
                     </div>
                 </div>
         </nav>
@@ -49,18 +64,18 @@
     <!-- Perguntas -->
     <div class="container">
         <div class="row">
-            <form action="" method="GET">
+            <form action="criapergunta.php" method="POST">
                 <div class="col col-lg-12 col-md-12 col-sm-12 mt-2 ff form-group" >
                     <div class="form-group">
-                    <label for="titulo"> Titulo </label>
-                    <input type="text" name="" id="titulo" class="form-control" minlength="4" required>    
+                    <label for="titulo"> Pergunta </label>
+                    <input type="text" name="pergunta" id="titulo" class="form-control" minlength="4" maxlength="150" required>    
                     </div>
                     <div class="form-group">
                     <label for="descricao"> Descrição </label><br>
-                    <textarea class="area-texto form-group" id="descricao" placeholder="#matematica #programação"></textarea>  
+                        <textarea class="area-texto form-group" name="descricao" id="descricao" placeholder="#matematica #programação" maxlength="50"></textarea>  
                     </div>
                     <hr>
-                    <button class="btn btn-outline-dark botao-form" type="submit" onclick="window.location.href='painel.html'">Criar</button>
+                    <input class="btn btn-outline-dark botao-form" type="submit" value="Criar">
                 </div>
             </form>
         </div>

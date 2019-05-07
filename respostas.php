@@ -1,3 +1,18 @@
+<?php  
+session_start();
+//Caso o usuário não esteja autenticado, limpa os dados e redireciona
+if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
+	//Destrói
+	session_destroy();
+
+	//Limpa
+	unset ($_SESSION['login']);
+	unset ($_SESSION['senha']);
+	
+	//Redireciona para a página de autenticação
+  echo '<script> window.history.go(-1); </script>';
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Criar pergunta - MetodoLOGICO</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="_css/perguntas.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="_css/respostas.css">
     <link href="https://fonts.googleapis.com/css?family=Nobile" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="icon" type="image/jpg" href="https://img.icons8.com/metro/26/000000/dice.png" />
@@ -25,21 +40,21 @@
     <!-- Navegacao -->
 
         <nav class="navbar navbar-expand navegacao">
-            <a class="navbar-brand" href="index.html">Metodo<span class="logoV">LÓGICO</span></a>
+            <a class="navbar-brand" href="index.php">Metodo<span class="logoV">LÓGICO</span></a>
                 <div class="nav-item">
-                    <a href="painel.html"><i class="fas fa-th-list icone"></i></a>
+                    <a href="painel.php"><i class="fas fa-th-list icone"></i></a>
                 </div>
                 <div class="dropdown">
                     <button class="botao-perfil" type="button" id="menu-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-cog icone"></i> 
                     </button>
                     <div class="dropdown-menu opcoes-perfil" aria-labelledby="menu-dropdown">
-                        <div class="texto-perfil">{User}</div>
+                    <?php echo '<div class="texto-perfil text-center">'. $_SESSION['login'] .'</div>';?>
                         <div class="dropdown-divider"></div> 
-                      <a class="dropdown-item" href="#"><i class="far fa-user"></i> Editar Perfil</a>
-                      <a class="dropdown-item" href="#"><i class="fas fa-key"></i> Mudar senha</a>
+                      <a class="dropdown-item" href="editar-perfil.php"><i class="far fa-user"></i> Editar Perfil</a>
+                      <a class="dropdown-item" href="mudar-senha.php"><i class="fas fa-key"></i> Mudar senha</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Deslogar</a>
+                    <?php echo '<a class="dropdown-item" href="logout.php?token='. $_SESSION['token'] .'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>'; ?>
                     </div>
                 </div>
         </nav>
@@ -48,34 +63,26 @@
 
     <!-- Perguntas -->
     <div class="container">
-        <div class="row">
-
-                <div class="col col-lg-12 col-md-12 col-sm-12 mt-2 div-titulo">
-                    <h1>{Titulo} <a href="#" onclick=""> <i class="far fa-edit ml-4 btn-editar btn-inner-pergunta"></i> </a></h1>
-                    <hr>
-                </div>
-
-        </div>
-
-        <form action='criarpergunta.php' method="GET">
-                <div class="col col-lg-12 col-md-12 col-sm-12 mt-2 form-group div-perguntas">
+    <form action='criapergunta.php' method="POST">
+        
+                <div class="col col-lg-12 col-md-12 col-sm-12 mt-3 form-group div-perguntas">
                     <div class="form-row">
 
                         <div class="form-group col-lg-10 col-md-8 col-sm-8 col-xs-8">
                         <label for='pergunta'><p>Pergunta</p></label>
-                         <input type="text" name="questao-pergunta" class='form-control pergunta' id="pergunta" required>
+                         <input type="text" name="questao-pergunta" class='form-control pergunta' id="pergunta" min-length="3" maxlength="150" required>
                         </div>
 
                         <div class="form-group col-lg-2 col-md-4 col-sm-4 col-xs-4">
                         <label for='pergunta'><p>Tempo Limite</p></label>
-                            <select id="input-tempo" class="form-control">
-                              <option value="0">5 s</option>
-                              <option value="0">10 s</option>
-                              <option value="0" selected>15 s</option>
-                              <option value="0">20 s</option>
-                              <option value="0">30 s</option>
-                              <option value="0">45 s</option>
-                              <option value="0">1 min</option>
+                            <select id="input-tempo" class="form-control" name="tempo">
+                              <option value="5">5 s</option>
+                              <option value="10">10 s</option>
+                              <option value="15" selected>15 s</option>
+                              <option value="20">20 s</option>
+                              <option value="30">30 s</option>
+                              <option value="45">45 s</option>
+                              <option value="60">1 min</option>
                             </select>
                         </div>
                     </div>
@@ -83,28 +90,28 @@
                     <div class="form-row">
                         <div class="col form-group">
                             <label for="resposta-1">Resposta 1</label>
-                            <input type="text" name="" class='form-control' id="resposta-1" required>  <input type="radio" id='resp-1' name="reposta"> <label for="resp-1"> <i class="far fa-check-circle opcao-correta"></i> </label> 
+                            <input type="text" name="resposta1" class='form-control' id="resposta-1" maxlength="80" required> <input type="radio" id='resp-1' name="repostacorreta" value="1" checked> <label for="resp-1"> <i class="far fa-check-circle opcao-correta"></i> </label> 
                         </div>
                         <div class="col form-group">
                             <label for="resposta-2">Resposta 2</label>
-                            <input type="text" name="" class='form-control' id="resposta-2" required> <input type="radio" id='resp-2' name="reposta"> <label for="resp-2"> <i class="far fa-check-circle opcao-correta" id='resp-2'></i> </label>
+                            <input type="text" name="resposta2" class='form-control' id="resposta-2" maxlength="80" required> <input type="radio" id='resp-2' name="repostacorreta" value="2"> <label for="resp-2"> <i class="far fa-check-circle opcao-correta" id='resp-2'></i> </label>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col form-group">
                             <label for="resposta-3">Resposta 3</label>
-                            <input type="text" name="" class='form-control' id="resposta-3" required> <input type="radio" id='resp-3' name="reposta"> <label for="resp-3"> <i class="far fa-check-circle opcao-correta" id='resp-3'></i> </label>
+                            <input type="text" name="resposta3" class='form-control' id="resposta-3" maxlength="80" required> <input type="radio" id='resp-3' name="repostacorreta" value="3"> <label for="resp-3"> <i class="far fa-check-circle opcao-correta" id='resp-3'></i> </label>
                         </div>
                         <div class="col form-group">
                             <label for="resposta-4">Resposta 4</label>
-                            <input type="text" name="" class='form-control' id="resposta-4" required> <input type="radio" id='resp-4' name="reposta"> <label for="resp-4"> <i class="far fa-check-circle opcao-correta" id='resp-4'></i> </label>
+                            <input type="text" name="resposta4" class='form-control' id="resposta-4" maxlength="80" required> <input type="radio" id='resp-4' name="repostacorreta" value="4"> <label for="resp-4"> <i class="far fa-check-circle opcao-correta" id='resp-4'></i> </label>
                         </div>
                     </div>
 
                 </div>
                 <hr>
-                <button type="submit" class="btn btn-outline-success btn-criar-pergunta">Criar</button>
+                <input type="submit" class="btn btn-outline-success btn-criar-pergunta" value="Criar">
             </form>
     </div>
 

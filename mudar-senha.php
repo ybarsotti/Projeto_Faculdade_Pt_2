@@ -1,3 +1,18 @@
+<?php  
+session_start();
+//Caso o usuário não esteja autenticado, limpa os dados e redireciona
+if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
+	//Destrói
+	session_destroy();
+
+	//Limpa
+	unset ($_SESSION['login']);
+	unset ($_SESSION['senha']);
+	
+	//Redireciona para a página de autenticação
+  echo '<script> window.history.go(-1); </script>';
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,20 +38,7 @@
 </noscript>
 
     <!-- Navegacao -->
-    <?php 
-        session_start(); 
-        if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
-            //Destrói
-            session_destroy();
-      
-            //Limpa
-            unset ($_SESSION['login']);
-            unset ($_SESSION['senha']);
-            
-            //Redireciona para a página de autenticação
-            header('location:login.php');
-        }
-    ?>
+
         <nav class="navbar navbar-expand navegacao">
             <a class="navbar-brand" href="index.php">Metodo<span class="logoV">LÓGICO</span></a>
                 <div class="nav-item">

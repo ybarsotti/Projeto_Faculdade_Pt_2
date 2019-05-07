@@ -1,3 +1,4 @@
+<?php  session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,13 +42,12 @@
                                 <a class="nav-link" href="#contato">Contato</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link cod-jogar" href="jogar.html" target="_blank">Entrar com código !</a>
+                                <a class="nav-link cod-jogar" href="jogar.php" target="_blank">Entrar com código !</a>
                             </li>
                     </ul>
 
                     <!-- Acesso de Login / Cadastro -->
     <?php 
-        session_start();
         if(isset($_SESSION['token'])) {
             echo ' <div class="dropdown">
             <button class="botao-perfil" type="button" id="menu-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -104,7 +104,7 @@
                 <div class="col col-lg-4 col-md-4 col-sm-4 border my-auto fundo"> </div>
 
                 <div class="col col-lg-4 col-md-4 col-sm-5 my-auto texto-apresentacao">
-                        <h1>Aprendizado sem tédio !</h1>
+                        <h1>Aprendizado sem tédio !</h1> 
                          <h4>Criando jogos para aprendizado em minutos.</h4>
                          <a href="cadastro.html"><button class="btn btn-lg btn-cadastro border mt-1 cad">Cadastre-se</button></a>
                 </div>

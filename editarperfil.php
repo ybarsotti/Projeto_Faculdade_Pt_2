@@ -1,3 +1,18 @@
+<?php  
+session_start();
+//Caso o usuário não esteja autenticado, limpa os dados e redireciona
+if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
+	//Destrói
+	session_destroy();
+
+	//Limpa
+	unset ($_SESSION['login']);
+	unset ($_SESSION['senha']);
+	
+	//Redireciona para a página de autenticação
+  echo '<script> window.history.go(-1); </script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,20 +24,6 @@
 <body>
     
     <?php
-        session_start();
-
-        //Caso o usuário não esteja autenticado, limpa os dados e redireciona
-        if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
-            //Destrói
-            session_destroy();
-
-            //Limpa
-            unset ($_SESSION['login']);
-            unset ($_SESSION['senha']);
-            
-            //Redireciona para a página de autenticação
-            header('location:login.php');
-        }
 
         $novousuario = $_POST['usrname'];
         $novoemail = $_POST['email'];

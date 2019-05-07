@@ -1,3 +1,4 @@
+<?php  session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +10,11 @@
 <body>
     
 <?php
-  
-  session_start();
+
   $token = md5(session_id());
   if(isset($_GET['token']) && $_GET['token'] === $token) {
      session_destroy();
-     header("location: index.php");
+     echo '<script> window.location.assign("index.php"); </script>';
      exit();
   }
 ?>  
