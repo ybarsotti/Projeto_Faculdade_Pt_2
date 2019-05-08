@@ -13,7 +13,26 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
   echo '<script> window.history.go(-1); </script>';
 
 }
-$idquestionario = $_GET['id'];
+$idpergunta = $_GET['id'];
+$userid     = $_SESSION['userId'];
+
+$host = 'localhost';
+$db   = 'id9155796_metodologico';
+$user = 'id9155796_barsotti';
+$pass = 'metodologico';
+
+$con = mysqli_connect($host, $user, $pass, $db);
+
+$sql = "SELECT * FROM `answers` WHERE ID = " . $idpergunta . " AND userId = " . $userid;
+
+if(!$con){
+  die('Erro na conexao!' . mysqli_connect_error($con));
+}
+
+$dados = mysqli_query($con, $sql) or die('Erro de query: ' . mysqli_error($con));
+
+$row = mysqli_fetch_assoc($dados);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +40,7 @@ $idquestionario = $_GET['id'];
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Criar pergunta - MetodoLOGICO</title>
+    <title>Editar Pergunta - MetodoLOGICO</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" media="screen" href="_css/respostas.css">
     <link href="https://fonts.googleapis.com/css?family=Nobile" rel="stylesheet">
@@ -65,14 +84,14 @@ $idquestionario = $_GET['id'];
 
     <!-- Perguntas -->
     <div class="container">
-    <?php echo' <form action="criapergunta.php?id=' . $idquestionario . '" method="POST">'; ?> 
+    <?php echo' <form action="editapergunta.php?id=' . $idpergunta . '" method="POST">'; ?> 
         
                 <div class="col col-lg-12 col-md-12 col-sm-12 mt-3 form-group div-perguntas">
                     <div class="form-row">
 
                         <div class="form-group col-lg-10 col-md-8 col-sm-8 col-xs-8">
                         <label for='pergunta'><p>Pergunta</p></label>
-                         <input type="text" name="questao-pergunta" class='form-control pergunta' id="pergunta" min-length="3" maxlength="150" required>
+                        <?php echo ' <input type="text" name="questao-pergunta" class="form-control pergunta" id="pergunta" min-length="3" maxlength="150" value="'. $row['question'] .'" required> '; ?>
                         </div>
 
                         <div class="form-group col-lg-2 col-md-4 col-sm-4 col-xs-4">
@@ -80,8 +99,8 @@ $idquestionario = $_GET['id'];
                             <select id="input-tempo" class="form-control" name="tempo">
                               <option value="5">5 s</option>
                               <option value="10">10 s</option>
-                              <option value="15" selected>15 s</option>
-                              <option value="20">20 s</option>
+                              <option value="15">15 s</option>
+                              <option value="20" selected>20 s</option>
                               <option value="30">30 s</option>
                               <option value="45">45 s</option>
                               <option value="60">1 min</option>
@@ -92,22 +111,22 @@ $idquestionario = $_GET['id'];
                     <div class="form-row">
                         <div class="col form-group">
                             <label for="resposta-1">Resposta 1</label>
-                            <input type="text" name="resposta1" class='form-control' id="resposta-1" maxlength="80" required> <input type="radio" id='resp-1' name="repostacorreta" value="1" checked> <label for="resp-1"> <i class="far fa-check-circle opcao-correta"></i> </label> 
+                            <?php echo '<input type="text" name="resposta1" class="form-control" id="resposta-1" maxlength="80" value="'. $row['ans1'] .'" required> <input type="radio" id="resp-1" name="repostacorreta" value="1" checked> <label for="resp-1"> <i class="far fa-check-circle opcao-correta"></i> </label> '; ?>
                         </div>
                         <div class="col form-group">
                             <label for="resposta-2">Resposta 2</label>
-                            <input type="text" name="resposta2" class='form-control' id="resposta-2" maxlength="80" required> <input type="radio" id='resp-2' name="repostacorreta" value="2"> <label for="resp-2"> <i class="far fa-check-circle opcao-correta" id='resp-2'></i> </label>
+                            <?php echo '<input type="text" name="resposta2" class="form-control" id="resposta-2" maxlength="80" value="'. $row['ans2'] .'" required> <input type="radio" id="resp-2" name="repostacorreta" value="2"> <label for="resp-2"> <i class="far fa-check-circle opcao-correta" id="resp-2"></i> </label> '; ?>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col form-group">
                             <label for="resposta-3">Resposta 3</label>
-                            <input type="text" name="resposta3" class='form-control' id="resposta-3" maxlength="80" required> <input type="radio" id='resp-3' name="repostacorreta" value="3"> <label for="resp-3"> <i class="far fa-check-circle opcao-correta" id='resp-3'></i> </label>
+                            <?php echo '<input type="text" name="resposta3" class="form-control" id="resposta-3" maxlength="80" value="'. $row['ans3'] .'" required> <input type="radio" id="resp-3" name="repostacorreta" value="3"> <label for="resp-3"> <i class="far fa-check-circle opcao-correta" id="resp-3"></i> </label> '; ?>
                         </div>
                         <div class="col form-group">
                             <label for="resposta-4">Resposta 4</label>
-                            <input type="text" name="resposta4" class='form-control' id="resposta-4" maxlength="80" required> <input type="radio" id='resp-4' name="repostacorreta" value="4"> <label for="resp-4"> <i class="far fa-check-circle opcao-correta" id='resp-4'></i> </label>
+                            <?php echo '<input type="text" name="resposta4" class="form-control" id="resposta-4" maxlength="80" value="'. $row['ans4'] .'" required> <input type="radio" id="resp-4" name="repostacorreta" value="4"> <label for="resp-4"> <i class="far fa-check-circle opcao-correta" id="resp-4"></i> </label> '; ?>
                         </div>
                     </div>
 

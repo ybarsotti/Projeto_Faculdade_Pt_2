@@ -64,11 +64,11 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     <!-- Perguntas -->
     <div class="container">
         <div class="row">
-            <form action="criapergunta.php" method="POST">
+            <form action="criaquestionario.php" method="POST">
                 <div class="col col-lg-12 col-md-12 col-sm-12 mt-2 ff form-group" >
                     <div class="form-group">
-                    <label for="titulo"> Pergunta </label>
-                    <input type="text" name="pergunta" id="titulo" class="form-control" minlength="4" maxlength="150" required>    
+                    <label for="titulo"> Titulo </label>
+                    <input type="text" name="titulo" id="titulo" class="form-control" minlength="4" maxlength="20" required>    
                     </div>
                     <div class="form-group">
                     <label for="descricao"> Descrição </label><br>

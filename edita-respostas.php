@@ -13,6 +13,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
   echo '<script> window.history.go(-1); </script>';
 }
 
+    $idquestionario = $_GET['id'];
     $host = 'localhost';  
     $db = 'id9155796_metodologico';
     $user = 'id9155796_barsotti';
@@ -20,18 +21,13 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     
     $con = mysqli_connect($host, $user, $pass, $db);
 
-    $quantidade = "SELECT * FROM `questions` WHERE userId = " . $_SESSION['userId'];
-    $sql = "SELECT `title` FROM `questions` WHERE userId = " . $_SESSION['userId'];
+    $respostas = "SELECT * FROM `answers` WHERE userId = " . $_SESSION['userId'] . " AND questionId = " . $idquestionario;
 
     if(!$con){
       die('Erro na conexao!' . mysqli_connect_error());
     }
     // pega quantidade de perguntas que o usuario tem
-    $quantidadeselect = mysqli_query($con, $quantidade) or die('Erro de query: ' . mysqli_error());
-
-    function deletaquestionario(){
-
-    }
+    $respostassql = mysqli_query($con, $respostas) or die('Erro de query: ' . mysqli_error());
 
 ?>
 <!DOCTYPE html>
@@ -40,9 +36,9 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Painel - MetodoLOGICO</title>
+    <title>Respostas - MetodoLOGICO</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="_css/painel.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="_css/edita-respostas.css">
     <link href="https://fonts.googleapis.com/css?family=Nobile" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="icon" type="image/jpg" href="https://img.icons8.com/metro/26/000000/dice.png" />
@@ -89,7 +85,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
         <div class="row">
             <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-2 ff">
                 <h1 class="text-center quantidade-questionarios"></h1>
-                <div class="col col-lg-8 col-md-8 col-sm-8 mx-auto mt-2 btnn"><a href="criarquestao.php" class="btn mx-auto botao-criar">Criar</a></div>
+              <?php echo ' <div class="col col-lg-8 col-md-8 col-sm-8 mx-auto mt-2 btnn"><a href="respostas.php?id='. $idquestionario .' " class="btn mx-auto botao-criar">Criar</a></div> '; ?>
             </div>
             <div class="col mx-auto col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
                 <table class="perguntas">
@@ -97,8 +93,8 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
                         <!--<td class="perguntas-inner"> {Titulo} <a href="jogar-admin.html" onclick="jogarQuestionario(titulo)"> <i class="far fa-play-circle ml-5 btn-jogar btn-inner-pergunta"></i> </a> <a href="#" onclick=""> <i class="far fa-edit ml-4 btn-editar btn-inner-pergunta"></i> </a> <a href="" data-toggle="modal" data-target="#modalexcluir"> <i class="far fa-times-circle ml-4 btn-excluir btn-inner-pergunta"></i> </a> </td> -->
                       <?php
 
-                        while($row = mysqli_fetch_assoc($quantidadeselect)){
-                          echo '<tr> <td class="perguntas-inner"> ' . substr($row['title'], 0, 20) . ' <div class="btn-outer-pergunta" > <a href="jogar-admin.php" onclick="jogarQuestionario(titulo)"> <i class="far fa-play-circle ml-5 btn-jogar btn-inner-pergunta"></i> </a> <a href="respostas.php?id='. $row["id"] .'" onclick=""> <i class="far fa-plus-square ml-4 btn-adicionar btn-inner-pergunta"></i> </a> <a href="edita-respostas.php?id='. $row["id"] .'"> <i class="far fa-edit ml-4 btn-editar btn-inner-pergunta"></i> </a> <a href="#" onclick="excluirQuestionario(' . $row["id"] .')"  data-toggle="modal" data-target="#modalexcluir"> <i class="far fa-times-circle ml-4 btn-excluir btn-inner-pergunta"></i> </a> </div> </td> </tr>';
+                        while($titulos = mysqli_fetch_assoc($respostassql)){
+                          echo '<tr> <td class="perguntas-inner"> ' . substr($titulos['question'], 0, 30) . ' <div class="btn-outer-pergunta"> <a href="editar-pergunta.php?id='. $titulos["ID"] .'" onclick=""> <i class="far fa-edit ml-4 btn-editar btn-inner-pergunta"></i> </a> <a href="#" onclick="excluirQuestionario(' . $titulos["ID"] .')"  data-toggle="modal" data-target="#modalexcluir"> <i class="far fa-times-circle ml-4 btn-excluir btn-inner-pergunta"></i> </a> </div> </td> </tr>';
                         }
                       ?>
                     
@@ -118,7 +114,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
                   </button>
                 </div>
                 <div class="modal-body">
-                  <p>Tem certeza que deseja excluir o questionário?</p>
+                  <p>Tem certeza que deseja excluir a pergunta?</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -131,7 +127,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
 
 
 
-        <script src="_js/painel.js"></script>
+        <script src="_js/edita-respostas.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>

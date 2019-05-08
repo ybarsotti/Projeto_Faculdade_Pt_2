@@ -19,7 +19,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastrar Pergunta</title>
+    <title>Editar Resposta</title>
 </head>
 <body>
 
@@ -32,7 +32,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     $resposta3       = $_POST['resposta3'];
     $resposta4       = $_POST['resposta4'];
     $respostacorreta = $_POST['repostacorreta'];
-    $idquestionario  = $_GET['id'];
+    $idpergunta      = $_GET['id'];
 
     $host = 'localhost';
     $db = 'id9155796_metodologico';
@@ -41,19 +41,19 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     
     $con = mysqli_connect($host, $user, $pass, $db);
 
-    $sql = "INSERT INTO `answers`(`question`, `ans1`, `ans2`, `ans3`, `ans4`,`correctans`, `time` ,`userID`, `questionId` ) VALUES ('". $pergunta . "', '" . $resposta1 . "', '" . $resposta2 . "' , '" . $resposta3 . "', '" . $resposta4 . "', " . $respostacorreta . ", " . $tempo . ", " . $userid . ", " . $idquestionario . ")";
+    $sql = "UPDATE `answers` SET `question` = '" . $pergunta . "' , `ans1` = '" . $resposta1 . "' , `ans2` = '" . $resposta2 . "', `ans3` = '" . $resposta3 . "' , `ans4` = '" . $resposta4 . "', `correctans` = " . $respostacorreta . ", `time` = " . $tempo . ", `userID` = " . $userid . " WHERE `ID` = " . $idpergunta  ;
+
     if(!$con){
       die('Erro na conexao!' . mysqli_connect_error($con));
     }
 
-    $insert = mysqli_query($con, $sql) or die('Erro de query: ' . mysqli_error($con));
+    $update = mysqli_query($con, $sql) or die('Erro de query: ' . mysqli_error($con));
 
-    if($insert != FALSE){
-      echo '<script> alert("Pergunta criada com sucesso !"); window.history.go(-1); </script>';
+    if($update != FALSE){
+      echo '<script> alert("Pergunta alterada com sucesso !"); window.history.go(-1); </script>';
     }
 
     mysqli_close($con);
-
 
 
 

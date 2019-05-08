@@ -5,7 +5,7 @@ window.addEventListener('load', function(){
     };
     var qtde = verQuantidade();
     questionario = document.querySelector('.quantidade-questionarios');
-    questionario.innerText = qtde < 1 ? 'Ops... Sem questionários criados !' :  'Você tem ' + qtde + ' formulário(s) de perguntas' ; 
+    questionario.innerText = qtde < 1 ? 'Sem perguntas criadas !' :  'Você tem ' + qtde + ' pergunta(s) !' ; 
 });
 
 const editarQuestionario = () =>{
@@ -16,7 +16,7 @@ const editarQuestionario = () =>{
 
 
 const excluirQuestionario = (row) =>{
-    document.querySelector('.fechar-modal').href = "apagarquestionario.php?id=" + row;
+    document.querySelector('.fechar-modal').href = "apagaresposta.php?id=" + row;
 };
 
 const jogarQuestionario = (nomejogo) =>{

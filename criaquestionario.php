@@ -25,14 +25,8 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
 
 <?php 
     $userid          = $_SESSION['userId'];
-    $pergunta        = $_POST['questao-pergunta'];
-    $tempo           = $_POST['tempo'];
-    $resposta1       = $_POST['resposta1'];
-    $resposta2       = $_POST['resposta2'];
-    $resposta3       = $_POST['resposta3'];
-    $resposta4       = $_POST['resposta4'];
-    $respostacorreta = $_POST['repostacorreta'];
-    $idquestionario  = $_GET['id'];
+    $titulo          = $_POST['titulo'];
+    $descricao       = $_POST['descricao'];
 
     $host = 'localhost';
     $db = 'id9155796_metodologico';
@@ -41,7 +35,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     
     $con = mysqli_connect($host, $user, $pass, $db);
 
-    $sql = "INSERT INTO `answers`(`question`, `ans1`, `ans2`, `ans3`, `ans4`,`correctans`, `time` ,`userID`, `questionId` ) VALUES ('". $pergunta . "', '" . $resposta1 . "', '" . $resposta2 . "' , '" . $resposta3 . "', '" . $resposta4 . "', " . $respostacorreta . ", " . $tempo . ", " . $userid . ", " . $idquestionario . ")";
+    $sql = "INSERT INTO `questions`(`title`, `description`, `userId`) VALUES ('". $titulo . "', '" . $descricao . "' ," . $userid .")";
     if(!$con){
       die('Erro na conexao!' . mysqli_connect_error($con));
     }
@@ -49,7 +43,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     $insert = mysqli_query($con, $sql) or die('Erro de query: ' . mysqli_error($con));
 
     if($insert != FALSE){
-      echo '<script> alert("Pergunta criada com sucesso !"); window.history.go(-1); </script>';
+      echo '<script> alert("Questionado criado com sucesso !"); window.history.go(-1); </script>';
     }
 
     mysqli_close($con);
