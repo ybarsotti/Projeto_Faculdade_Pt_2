@@ -1,15 +1,14 @@
-const iniciar = () =>{
+window.onload(jogadoresEmSala());
+window.onload(setInterval(jogadoresEmSala(), 2000));
+
+function jogadoresEmSala(){
     $.ajax({
-        type: "post",
-        url: "../servidor/inicia-jogo.php",
+        type: "POST",
+        url: "../servidor/jogadores-em-sala.php",
+        data: $("#room-id").serialize(),
         error: function (){
             alert("Erro ao chamar funcao");
-        },
-        data: {
-            "iniciar": "TRUE"
-        },
-        complete: function(){
-            alert("teste");
         }
     });
 }
+

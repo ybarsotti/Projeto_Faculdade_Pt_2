@@ -29,11 +29,10 @@ session_start();
     $pergunta = mysqli_fetch_assoc($pergunta);
 
     //Valida se o jogo comecou
-    $andamento = FALSE;
+    require_once("servidor/inicia-jogo.php");
 
     //Seleciona os usuarios que estao na sala
-    $usuariosquery       = "SELECT * FROM user u JOIN ongoing o WHERE (u.userId = o.userId) AND o.roomId = " . $codsala;
-    $usuarios            = mysqli_query($con, $usuariosquery);
+    require("servidor/jogadores-em-sala.php");
    
 
 ?>
@@ -53,6 +52,10 @@ session_start();
 </head>
 <body>
 
+        <form id="room-id">           
+            <?php echo '<input type="hidden" name="room-id" value="' . $codsala . '"> ';?>
+        </form>
+
 <noscript>
     <div class="alert alert-danger" role="alert">
         <h4 class="alert-heading">Ah não!</h4>
@@ -65,7 +68,6 @@ session_start();
 <nav class="navbar navbar-expand">
     <?php echo 'Cod: ' . $codsala; 
         if(!$andamento){
-            require_once("servidor/inicia-jogo.php");
             echo '<button class="btn" onclick="iniciar()">Iniciar partida</button>';
         } else{
             echo '<button class="btn">Proximo</button>';
@@ -111,31 +113,6 @@ session_start();
 
         </div>
     </div>
-
-    
-         <input type="hidden" id="id-user" name="userid" value="<?php $_SESSION['userId']; ?>"  data-toggle="modal" data-target="#modalsair">
-    
-
-    <!-- modal  -->
-    <div class="modal fade" id="modalsair" tabindex="-1" role="dialog" aria-labelledby="modallabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Sair</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Tem certeza que deseja sair?</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                  <a href="" type="button" class="btn btn-danger fechar-modal">Confirmar</a>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
         <script src="_js/jogar-admin.js"></script>
