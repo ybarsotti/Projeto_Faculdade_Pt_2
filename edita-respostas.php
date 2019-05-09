@@ -28,7 +28,6 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     }
     // pega quantidade de perguntas que o usuario tem
     $respostassql = mysqli_query($con, $respostas) or die('Erro de query: ' . mysqli_error());
-
 ?>
 <!DOCTYPE html>
 <html>

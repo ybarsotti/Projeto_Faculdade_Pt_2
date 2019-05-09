@@ -98,7 +98,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
                       <?php
 
                         while($row = mysqli_fetch_assoc($quantidadeselect)){
-                          echo '<tr> <td class="perguntas-inner"> ' . substr($row['title'], 0, 20) . ' <div class="btn-outer-pergunta" > <a href="jogar-admin.php" onclick="jogarQuestionario(titulo)"> <i class="far fa-play-circle ml-5 btn-jogar btn-inner-pergunta"></i> </a> <a href="respostas.php?id='. $row["id"] .'" onclick=""> <i class="far fa-plus-square ml-4 btn-adicionar btn-inner-pergunta"></i> </a> <a href="edita-respostas.php?id='. $row["id"] .'"> <i class="far fa-edit ml-4 btn-editar btn-inner-pergunta"></i> </a> <a href="#" onclick="excluirQuestionario(' . $row["id"] .')"  data-toggle="modal" data-target="#modalexcluir"> <i class="far fa-times-circle ml-4 btn-excluir btn-inner-pergunta"></i> </a> </div> </td> </tr>';
+                          echo '<tr> <td class="perguntas-inner"> ' . substr($row['title'], 0, 20) . ' <div class="btn-outer-pergunta" > <a href="servidor/gerasala.php?id='. $row["id"] .'"> <i class="far fa-play-circle ml-5 btn-jogar btn-inner-pergunta"></i> </a> <a href="respostas.php?id='. $row["id"] .'" onclick=""> <i class="far fa-plus-square ml-4 btn-adicionar btn-inner-pergunta"></i> </a> <a href="edita-respostas.php?id='. $row["id"] .'"> <i class="far fa-edit ml-4 btn-editar btn-inner-pergunta"></i> </a> <a href="#" onclick="excluirQuestionario(' . $row["id"] .')"  data-toggle="modal" data-target="#modalexcluir"> <i class="far fa-times-circle ml-4 btn-excluir btn-inner-pergunta"></i> </a> </div> </td> </tr>';
                         }
                       ?>
                     

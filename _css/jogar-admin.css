@@ -31,3 +31,13 @@ html{
 .pergunta{
     font-size: 2.5rem;
 }
+
+.users{
+    border-left: 1px black solid;
+}
+
+.usuarios tr td {
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    color: rgb(0, 250, 33);
+}
