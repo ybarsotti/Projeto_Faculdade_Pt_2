@@ -28,6 +28,9 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     }
     // pega quantidade de perguntas que o usuario tem
     $respostassql = mysqli_query($con, $respostas) or die('Erro de query: ' . mysqli_error());
+
+       //Limita acesso de aluno
+       require('servidor/limitar-acesso.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,6 +46,14 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     <link rel="icon" type="image/jpg" href="https://img.icons8.com/metro/26/000000/dice.png" />
 </head>
 <body>
+
+<?php 
+  //Limita acesso de aluno
+  if($_SESSION['userType'] != 2){
+     echo '<script> alert("Acesso somente para professores");
+     window.location.href="index.php"; </script>';
+    }
+?>
 
 <noscript>
     <div class="alert alert-danger" role="alert">

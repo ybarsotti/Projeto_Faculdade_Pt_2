@@ -33,6 +33,8 @@ $dados = mysqli_query($con, $sql) or die('Erro de query: ' . mysqli_error($con))
 
 $row = mysqli_fetch_assoc($dados);
 
+   //Limita acesso de aluno
+   require('servidor/limitar-acesso.php');
 ?>
 <!DOCTYPE html>
 <html>

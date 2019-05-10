@@ -55,9 +55,11 @@
             </button>
             <div class="dropdown-menu opcoes-perfil" aria-labelledby="menu-dropdown">
                 <div class="texto-perfil text-center">'. $_SESSION['login'] .'</div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="painel.php"><i class="fas fa-th-list icone"></i> Painel</a> 
-                <a class="dropdown-item" href="editar-perfil.php"><i class="far fa-user"></i> Editar Perfil</a>
+                <div class="dropdown-divider"></div>';
+                if($_SESSION['userType'] == 2){
+               echo ' <a class="dropdown-item" href="painel.php"><i class="fas fa-th-list icone"></i> Painel</a> ';
+                }
+            echo '<a class="dropdown-item" href="editar-perfil.php"><i class="far fa-user"></i> Editar Perfil</a>
                 <a class="dropdown-item" href="mudar-senha.php"><i class="fas fa-key"></i> Mudar senha</a>
                 <div class="dropdown-divider"></div> 
                 <a class="dropdown-item" href="logout.php?token='. $_SESSION['token'] .'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>
@@ -88,7 +90,7 @@
                         </li>
                     </ul>
                    <a href="cadastro.html" target="_blank"><button class="btn btn-primary btn-cadastro px-4 mx-1 newacc">Cadastro</button></a>';
-                }
+                };
                 ?>  
               </div>
         </nav>

@@ -34,6 +34,8 @@ session_start();
     //Seleciona os usuarios que estao na sala
     require("servidor/jogadores-em-sala.php");
    
+       //Limita acesso de aluno
+       require('servidor/limitar-acesso.php');
 
 ?>
 

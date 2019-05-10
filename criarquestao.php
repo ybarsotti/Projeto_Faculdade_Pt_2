@@ -12,6 +12,10 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
 	//Redireciona para a página de autenticação
   echo '<script> window.history.go(-1); </script>';
 }
+
+   //Limita acesso de aluno
+   require('servidor/limitar-acesso.php');
+
 ?>
 <!DOCTYPE html>
 <html>

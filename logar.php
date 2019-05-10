@@ -34,6 +34,9 @@
                 $userid = mysqli_query($con, "SELECT `userID` from `user` WHERE `userName` = '" . $login . "'") or die('Erro SQL:' . mysqli_error($con));
                 $userid = mysqli_fetch_array($userid);
                 $_SESSION['userId'] = $userid[0];
+                $usertype = mysqli_query($con, "SELECT `userType` from `user` WHERE `userName` = '" . $login . "'") or die('Erro SQL:' . mysqli_error($con));
+                $usertype = mysqli_fetch_array($usertype);
+                $_SESSION['userType'] = $usertype[0];
                 echo '<script> window.history.go(-1); </script>';
                 exit();
               

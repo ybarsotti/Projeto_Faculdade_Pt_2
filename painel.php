@@ -1,17 +1,19 @@
 <?php  
-session_start();
-//Caso o usuário não esteja autenticado, limpa os dados e redireciona
-if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
-	//Destrói
-	session_destroy();
+  session_start();
+  //Caso o usuário não esteja autenticado, limpa os dados e redireciona
+  if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
+    //Destrói
+    session_destroy();
 
-	//Limpa
-	unset ($_SESSION['login']);
-	unset ($_SESSION['senha']);
-	
-	//Redireciona para a página de autenticação
-  echo '<script> window.history.go(-1); </script>';
-}
+    //Limpa
+    unset ($_SESSION['login']);
+    unset ($_SESSION['senha']);
+    
+    //Redireciona para a página de autenticação
+    echo '<script> window.history.go(-1); </script>';
+
+  }
+ 
 
     $host = 'localhost';  
     $db = 'id9155796_metodologico';
@@ -29,9 +31,10 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     // pega quantidade de perguntas que o usuario tem
     $quantidadeselect = mysqli_query($con, $quantidade) or die('Erro de query: ' . mysqli_error());
 
-    function deletaquestionario(){
-
-    }
+    
+    //Limita acesso de aluno
+    require('servidor/limitar-acesso.php');
+  
 
 ?>
 <!DOCTYPE html>
@@ -48,6 +51,8 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     <link rel="icon" type="image/jpg" href="https://img.icons8.com/metro/26/000000/dice.png" />
 </head>
 <body>
+
+
 
 <noscript>
     <div class="alert alert-danger" role="alert">
@@ -96,7 +101,6 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
                     
                         <!--<td class="perguntas-inner"> {Titulo} <a href="jogar-admin.html" onclick="jogarQuestionario(titulo)"> <i class="far fa-play-circle ml-5 btn-jogar btn-inner-pergunta"></i> </a> <a href="#" onclick=""> <i class="far fa-edit ml-4 btn-editar btn-inner-pergunta"></i> </a> <a href="" data-toggle="modal" data-target="#modalexcluir"> <i class="far fa-times-circle ml-4 btn-excluir btn-inner-pergunta"></i> </a> </td> -->
                       <?php
-
                         while($row = mysqli_fetch_assoc($quantidadeselect)){
                           echo '<tr> <td class="perguntas-inner"> ' . substr($row['title'], 0, 20) . ' <div class="btn-outer-pergunta" > <a href="servidor/gerasala.php?id='. $row["id"] .'"> <i class="far fa-play-circle ml-5 btn-jogar btn-inner-pergunta"></i> </a> <a href="respostas.php?id='. $row["id"] .'" onclick=""> <i class="far fa-plus-square ml-4 btn-adicionar btn-inner-pergunta"></i> </a> <a href="edita-respostas.php?id='. $row["id"] .'"> <i class="far fa-edit ml-4 btn-editar btn-inner-pergunta"></i> </a> <a href="#" onclick="excluirQuestionario(' . $row["id"] .')"  data-toggle="modal" data-target="#modalexcluir"> <i class="far fa-times-circle ml-4 btn-excluir btn-inner-pergunta"></i> </a> </div> </td> </tr>';
                         }

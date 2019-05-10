@@ -42,7 +42,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
         <nav class="navbar navbar-expand navegacao">
             <a class="navbar-brand" href="index.php">Metodo<span class="logoV">LÓGICO</span></a>
                 <div class="nav-item">
-                    <a href="painel.php"><i class="fas fa-th-list icone"></i></a>
+                   <?php if($_SESSION['userType'] == 2) echo' <a href="painel.php"><i class="fas fa-th-list icone"></i></a> ';?>
                 </div>
                 <div class="dropdown">
                     <button class="botao-perfil" type="button" id="menu-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

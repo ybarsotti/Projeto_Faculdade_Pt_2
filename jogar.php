@@ -29,7 +29,7 @@
             <div class="row align-items-center vh-90">
                 <div class="col col-lg-4 mx-auto mt-auto caixa-form">
                     <div class="form-group">
-                        <form action="#" method="GET" onsubmit="return validar()">
+                        <form action="jogar-jogador.php" method="GET" onsubmit="return validar()">
                             <h2 class="text-center">Insira o código da sala</h2>
                             <input type="text" name="" id="senha" placeholder='Código' class="form-control mb-1">
                             <input type="submit" value="Entrar" class="form-control">

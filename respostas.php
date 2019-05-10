@@ -14,6 +14,9 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
 
 }
 $idquestionario = $_GET['id'];
+
+   //Limita acesso de aluno
+   require('servidor/limitar-acesso.php');
 ?>
 <!DOCTYPE html>
 <html>
