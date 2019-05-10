@@ -23,20 +23,6 @@
     </div>
 </noscript>
 
-        <!-- Loader -->
-        <div class="loader">
-            <div class="loader-inner   pacman">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-            </div>
-        </div>
-
-
-        <!-- Fim do loader -->
-
         <!-- Senha de acesso -->
         <div class="container-fluid principal">
 

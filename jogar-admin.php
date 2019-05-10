@@ -29,7 +29,7 @@ session_start();
     $pergunta = mysqli_fetch_assoc($pergunta);
 
     //Valida se o jogo comecou
-    require_once("servidor/inicia-jogo.php");
+    require("servidor/inicia-jogo.php");
 
     //Seleciona os usuarios que estao na sala
     require("servidor/jogadores-em-sala.php");
@@ -67,8 +67,8 @@ session_start();
 
 <nav class="navbar navbar-expand">
     <?php echo 'Cod: ' . $codsala; 
-        if(!$andamento){
-            echo '<button class="btn" onclick="iniciar()">Iniciar partida</button>';
+        if($andamento == FALSE){
+            echo '<button class="btn" onclick="iniciar('.$codsala.')">Iniciar partida</button>';
         } else{
             echo '<button class="btn">Proximo</button>';
         }
@@ -88,6 +88,7 @@ session_start();
                 <div class="pergunta">
                     <?php
                         echo $pergunta['question'];
+                        echo $andamento;
                     ?>
                     <hr>
                 </div>

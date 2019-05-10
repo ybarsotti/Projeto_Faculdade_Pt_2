@@ -12,3 +12,10 @@ function jogadoresEmSala(){
     });
 }
 
+function iniciar(codsala){
+    $.ajax({
+        type: "POST",
+        url: "../servidor/inicia-jogo.php",
+        data: 'codsala': codsala
+    });
+}

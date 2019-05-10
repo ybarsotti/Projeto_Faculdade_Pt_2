@@ -1,8 +1,9 @@
 <?php 
     $andamento = FALSE;
-    if(isset($_POST['iniciar'])){
-        $iniciar = $_POST['iniciar'];
-       return  $andamento = $iniciar;
+    $codigosala = $_REQUEST['codsala'];
+    
+    function iniciar(){
         
-}
+    }
+        
 ?>
