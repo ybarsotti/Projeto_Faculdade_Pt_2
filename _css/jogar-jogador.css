@@ -22,8 +22,15 @@
     background: rgb(72, 223, 80);
 }
 
+.row-container{
+    min-width: 100vw;
+}
+
 .row-respostas{
     height: 18rem;
+    min-width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
 @media screen and (min-width: 992px){
@@ -73,7 +80,6 @@
                  0px 2px 0px #000, 
                  0px -2px 0px #000;
 }
-
 
 
 .col-resposta{

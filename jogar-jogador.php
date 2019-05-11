@@ -23,11 +23,12 @@
     mysqli_query($con, $sql2) or die("Erro sem query (NN): " . mysqli_error($con));
 }
 
-    //Query para inserir o jogador na sala (Nao cadastrado)
+    //Query para inserir o jogador na sala (cadastrado)
     if(isset($_SESSION['userId'])){
         $sql2 = "INSERT INTO `ongoing`(`roomId`,`userId`,`userName`) VALUES (" . $res[0] . ", " . $_SESSION['userId'] . ", '" . $_SESSION['login'] ."')";
         mysqli_query($con, $sql2) or die("Erro sem query (CN): " . mysqli_error($con));
-}
+    }
+
 
 ?>
 
@@ -44,7 +45,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="icon" type="image/jpg" href="https://img.icons8.com/metro/26/000000/dice.png" />
 </head>
-<body>
+<body <?php echo 'onload="questionario('. $codigosala .')";'; ?>>
 
 <noscript>
     <div class="alert alert-danger" role="alert">
@@ -58,8 +59,13 @@
     <!-- Navegacao -->
 
     <nav class="navbar navbar-expand">
-            <?php echo 'Cod: ' . $codigosala; ?>
-            <button class="btn">Sair</button>
+            <p id="codigo"> <?php echo 'Cod: ' . $codigosala ; ?> </p>
+            <form action="servidor/sair-sala.php" method="post" class="mb-4"> 
+            <?php 
+            $botao = isset($_POST['nickname']) ? '<button class="btn" onclick="sair()" name="user" value="\''.$nickname.'\'">Sair</button>' : ' <button class="btn" onclick="sair()" name="user" value="'.$_SESSION['login'].'">Sair</button> ' ;
+            echo $botao;
+            ?>
+            <form>
     </nav>
         
 
@@ -72,7 +78,7 @@
 
             <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
                 <div class="questao text-center mx-auto">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis quidem facere eveniet maxime distinctio ut, nemo pariatur aperiam facilis nostrum.
+                    
                 </div>
             </div>
 
@@ -83,29 +89,30 @@
             <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
                 <div class="temporizador text-center">
                     <div class="tempo mx-auto">
-                        <span id="temporizador">20</span>
+                        <span id="temporizador" onclick="timer()"></span>
                     </div>
                 </div>
             </div>
 
         </div>
-        <div class="row fixed-bottom">
+
+        <div class="row container fixed-bottom">
         <form action="">
             <div class="row mt-5 row-respostas">
 
                 <input type="radio" name="resposta" id="resposta-1">
                 
                         <label for='resposta-1' class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-1"> 
-                            <div class="resposta" onclick="">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing eli
+                            <div class="resposta div-resposta-1" onclick="">
+
                             </div>
                         </label>
                 
                 <input type="radio" name="resposta" id="resposta-2">
 
                         <label for='resposta-2' class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-2">
-                            <div class="resposta" onclick=''>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam, earum.
+                            <div class="resposta div-resposta-2" onclick=''>
+                            
                             </div> 
                         </label>
 
@@ -116,16 +123,16 @@
                     <input type="radio" name="resposta" id="resposta-3">
                          
                             <label for='resposta-3' class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-3"> 
-                                <div class="resposta" onclick="">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam, earum.
+                                <div class="resposta div-resposta-3" onclick="">
+                                
                                 </div>
                             </label>
                         
                         <input type="radio" name="resposta" id="resposta-4">
                   
                         <label for='resposta-4' class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-4"> 
-                            <div class="resposta" onclick="">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam, earum.
+                            <div class="resposta div-resposta-4" onclick="">
+                            
                             </div> 
                         </label>
               
@@ -135,7 +142,7 @@
     </div>
 
         <script src="_js/jogar-jogador.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>

@@ -30,9 +30,6 @@ session_start();
 
     //Valida se o jogo comecou
     require("servidor/inicia-jogo.php");
-
-    //Seleciona os usuarios que estao na sala
-    //require("servidor/jogadores-em-sala.php");
    
     //Limita acesso de aluno
     require('servidor/limitar-acesso.php');
