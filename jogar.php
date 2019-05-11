@@ -1,4 +1,4 @@
-<?php  session_start();?>
+<?php  session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,10 +29,16 @@
             <div class="row align-items-center vh-90">
                 <div class="col col-lg-4 mx-auto mt-auto caixa-form">
                     <div class="form-group">
-                        <form action="jogar-jogador.php" method="GET" onsubmit="return validar()">
+                        <form action="jogar-jogador.php" method="POST" class="envio-jogar">
                             <h2 class="text-center">Insira o código da sala</h2>
-                            <input type="text" name="" id="senha" placeholder='Código' class="form-control mb-1">
-                            <input type="submit" value="Entrar" class="form-control">
+                            <div id="nickinput"></div>
+                            <input type="text" name="codigo" id="codigo" placeholder='Código' class="form-control mb-1">
+                            <?php 
+                                if(isset($_SESSION['userId'])){
+                                    echo '<input type="hidden" name="userid" id="userid" value="'. $_SESSION['userId'] .'">';
+                                }
+                            ?>
+                            <input type="button" value="Entrar" class="form-control" onclick="validar()">
                         </form>
                     </div>
                 </div>

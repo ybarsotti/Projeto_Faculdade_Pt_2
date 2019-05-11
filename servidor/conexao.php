@@ -9,6 +9,6 @@
     if(!$con){
       die('Erro na conexao!' . mysqli_connect_error($con));
     }
-
+    
 
 ?>

@@ -1,3 +1,36 @@
+<?php 
+    session_start();
+    require("servidor/conexao.php");
+
+    $codigosala = $_POST['codigo'];
+
+    if(isset($_POST['nickname'])){
+        $nickname = $_POST['nickname'];
+    }
+
+    //Query para verificar se a sala existe
+    $sql = "SELECT `roomId` from `ongoing` WHERE `roomId` = " . $codigosala;
+    $res = mysqli_query($con, $sql);
+    $res = mysqli_fetch_array($res);
+
+    if($codigosala == '' or $codigosala != $res[0]){
+        echo "<script> alert('Sala nao encontrada!'); window.location.href='jogar.php'; </script>";
+    }
+
+    //Query para inserir o jogador na sala (Nao cadastrado)
+    if(isset($nickname)){
+    $sql2 = "INSERT INTO `ongoing` (`roomId`, `userName`) VALUES (" . $res[0] . ", '" . $nickname . "')";
+    mysqli_query($con, $sql2) or die("Erro sem query (NN): " . mysqli_error($con));
+}
+
+    //Query para inserir o jogador na sala (Nao cadastrado)
+    if(isset($_SESSION['userId'])){
+        $sql2 = "INSERT INTO `ongoing`(`roomId`,`userId`,`userName`) VALUES (" . $res[0] . ", " . $_SESSION['userId'] . ", '" . $_SESSION['login'] ."')";
+        mysqli_query($con, $sql2) or die("Erro sem query (CN): " . mysqli_error($con));
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +58,7 @@
     <!-- Navegacao -->
 
     <nav class="navbar navbar-expand">
-            Cod: xxxxx
+            <?php echo 'Cod: ' . $codigosala; ?>
             <button class="btn">Sair</button>
     </nav>
         
@@ -50,7 +83,7 @@
             <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
                 <div class="temporizador text-center">
                     <div class="tempo mx-auto">
-                        <span>20</span>
+                        <span id="temporizador">20</span>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,7 @@ h2{
     flex-direction: column;
 }
 
-input[type='text'], input[type='submit']{
+input[type='text'], input[type='button']{
     width: 50%;
     float: center;
     margin: 0 auto;
@@ -33,17 +33,17 @@ input[type='text'], input[type='submit']{
     animation: balanca 0.3s;
 }
 
-input[type='submit']{
+input[type='button']{
     background: #5f5c64;
     color: #fff;
     border: none;
 }
 
-input[type='submit']:hover{
+input[type='button']:hover{
     animation: balanca .3s;
 }
 
-input[type='submit']:focus{
+input[type='button']:focus{
     background: #aaa5b1;
 }
 

@@ -1,7 +1,14 @@
 <?php 
-    if(isset($_REQUEST['room-id'])){
-    $codsala = $_REQUEST['room-id'];
+    if(isset($_POST['roomid'])){
+    $codsala = $_POST['roomid'];
     }
-    $usuariosquery       = "SELECT * FROM user u JOIN ongoing o WHERE (u.userId = o.userId) AND o.roomId = " . $codsala;
+    require("conexao.php");
+
+    $usuariosquery       = "SELECT * FROM ongoing WHERE roomId = " . $codsala;
     $usuarios            = mysqli_query($con, $usuariosquery);
+    while($res = mysqli_fetch_assoc($usuarios)){
+        $vetor[] = array_map('utf8_encode', $res);
+    }
+    echo json_encode($vetor);
+
 ?>
