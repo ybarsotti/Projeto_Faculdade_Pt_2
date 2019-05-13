@@ -12,18 +12,26 @@ window.onload = function () {
             success: function(dados){
                 for(var i = 0; dados.length>i; i++)
                 $('.usuarios').append('<tr><td>' + dados[i].userName + '</td></tr>');
-            },
-            error: console.log("erro")
+            }
         })
     }
         setInterval(att, 3000);
     };
 
+
+
    
-/*function iniciar(codsala){
+function iniciar(codigo){
     $.ajax({
         type: "POST",
-        url: "../servidor/inicia-jogo.php",
-        data: 'codsala': codsala
+        url: "servidor/inicia-jogo.php",
+        data: {codsala : codigo},
+        success: function(dado){
+            if(dado != false){
+                $('.navbar').append('<button class="btn" id="proximo" onclicl="">Proximo</button>');
+                $('#iniciar').remove();
+            }
+        },
+        error: console.log("erro")
     });
-}*/
+}

@@ -7,7 +7,7 @@
     //Grava no banco a sala em andamento no momento
     require_once('conexao.php');
 
-    $sql = "INSERT INTO ongoing(`roomId`,`userId`,`userName`, `questionId`) VALUES(" . $codsala . "," . $_SESSION['userId'] . ", '" . $_SESSION['login'] . "' , " . $idquestionario . ")";
+    $sql = "INSERT INTO ongoing(`roomId`,`userId`,`userName`, `questionId`, `status`) VALUES(" . $codsala . "," . $_SESSION['userId'] . ", '" . $_SESSION['login'] . "' , " . $idquestionario . " , " . 0 .")";
 
     mysqli_query($con, $sql) or die('Erro de query: ' . mysqli_error($con));
     mysqli_close($con);

@@ -1,3 +1,28 @@
+    const verificaPartida = (codigo) =>{
+        var status = false;
+
+        if(!status){
+            setTimeout(
+                $.ajax({
+                    type: 'post',
+                    url: 'servidor/verifica-status.php',
+                    data: {codsala : codigo},
+                    success:function(dado){
+                        if(dado == 1){
+                            status = true;
+                            questionario(codigo);
+                            console.log(dado);
+                        }
+                    },
+                    error: function(dado){console.log(dado);}
+            }),600);
+        }
+};
+
+
+
+
+
 function questionario(codigo){
     var id = codigo;
     $(".questao").empty();
@@ -30,5 +55,5 @@ function timer(){
 
 
 const sair = () =>{
-    document.forms.submit();
+    document.saida.submit();
 }

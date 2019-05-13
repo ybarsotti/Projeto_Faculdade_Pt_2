@@ -7,7 +7,7 @@
     $query = mysqli_query($con, $sql) or die('Erro na query:' . mysqli_error($con));
     mysqli_close($con);
     
-  echo '<script> window.location.href="index.php";</script>';
+  echo '<script> window.location.href="../index.php";</script>';
 
   
 ?>

@@ -29,7 +29,7 @@ session_start();
     $pergunta = mysqli_fetch_assoc($pergunta);
 
     //Valida se o jogo comecou
-    require("servidor/inicia-jogo.php");
+    //require("servidor/inicia-jogo.php");
    
     //Limita acesso de aluno
     require('servidor/limitar-acesso.php');
@@ -66,12 +66,9 @@ session_start();
 
 <nav class="navbar navbar-expand">
     <?php echo 'Cod: ' . $codsala; 
-        if($andamento == FALSE){
-            echo '<button class="btn" onclick="iniciar('.$codsala.')">Iniciar partida</button>';
-        } else{
-            echo '<button class="btn">Proximo</button>';
-        }
-         
+        
+          echo '<button class="btn" id="iniciar" onclick="iniciar('.$codsala.')">Iniciar partida</button>';
+    
     ?>
 
         
@@ -100,14 +97,6 @@ session_start();
             </div>
             <div class="col users">
                 <table class="usuarios">
-
-                    <?php
-                    /*
-                    while($usuarioson = mysqli_fetch_array($usuarios)){
-                    echo '<tr> <td>' . $usuarioson[0] . '</td> </td>' ;
-                    }*/
-
-                    ?>
                 </table>
             </div>
 
