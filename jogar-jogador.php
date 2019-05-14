@@ -1,6 +1,11 @@
 <?php 
     session_start();
     require("servidor/conexao.php");
+    $andamento = false;
+    // Variavel para receber quando inicializar o jogo pelo admin
+    if(isset($_POST['andamento'])){
+        $andamento = $_POST['andamento'];
+    }
 
     $codigosala = $_POST['codigo'];
 
@@ -45,7 +50,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="icon" type="image/jpg" href="https://img.icons8.com/metro/26/000000/dice.png" />
 </head>
-<body <?php echo 'onload="verificaPartida('. $codigosala .')";'; ?>>
+<body <?php echo 'onload="verificaPartida('. $codigosala .')"'; ?>>
 
 <noscript>
     <div class="alert alert-danger" role="alert">
@@ -70,8 +75,27 @@
         
 
     <!-- Fim da navegacao-->
+<div class="aguardando">
+    <div class="box">
+      <div id="anim-two">
+        <ul>
+          <li>A</li>
+          <li>G</li>
+          <li>U</li>
+          <li>A</li>
+          <li>R</li>
+          <li>D</li>
+          <li>E</li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
 
-    <!-- Form de edicao -->
+
+
+    <!-- Form de questionario -->
+
     <div class="container-fluid">
 
         <div class="row">
@@ -97,21 +121,24 @@
         </div>
 
         <div class="row container fixed-bottom">
-        <form action="">
+
+  
+
+        <form id="form-resposta">
             <div class="row mt-5 row-respostas">
 
-                <input type="radio" name="resposta" id="resposta-1">
+                <input type="radio" name="resposta" id="resposta-1" value="1">
                 
-                        <label for='resposta-1' class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-1"> 
-                            <div class="resposta div-resposta-1" onclick="">
+                        <label for="resposta-1" class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-1"> 
+                            <div class="resposta div-resposta-1">
 
                             </div>
                         </label>
                 
-                <input type="radio" name="resposta" id="resposta-2">
+                <input type="radio" name="resposta" id="resposta-2" value="2">
 
-                        <label for='resposta-2' class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-2">
-                            <div class="resposta div-resposta-2" onclick=''>
+                        <label for="resposta-2" class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-2">
+                            <div class="resposta div-resposta-2">
                             
                             </div> 
                         </label>
@@ -122,16 +149,16 @@
 
                     <input type="radio" name="resposta" id="resposta-3">
                          
-                            <label for='resposta-3' class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-3"> 
-                                <div class="resposta div-resposta-3" onclick="">
+                            <label for="resposta-3" class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-3"> 
+                                <div class="resposta div-resposta-3" value="3">
                                 
                                 </div>
                             </label>
                         
                         <input type="radio" name="resposta" id="resposta-4">
                   
-                        <label for='resposta-4' class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-4"> 
-                            <div class="resposta div-resposta-4" onclick="">
+                        <label for="resposta-4" class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-4"> 
+                            <div class="resposta div-resposta-4" value="4">
                             
                             </div> 
                         </label>

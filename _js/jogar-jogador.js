@@ -1,26 +1,28 @@
     const verificaPartida = (codigo) =>{
         var status = false;
-
-        if(!status){
-            setTimeout(
+        function verifica(){
+        if(status != true){
                 $.ajax({
                     type: 'post',
                     url: 'servidor/verifica-status.php',
                     data: {codsala : codigo},
-                    success:function(dado){
+                    success: function(dado){
                         if(dado == 1){
                             status = true;
+                            document.querySelector(".aguardando").style.display = "none";
+                            document.querySelector(".container-fluid").style.display = "block";
                             questionario(codigo);
                             console.log(dado);
                         }
                     },
-                    error: function(dado){console.log(dado);}
-            }),600);
+                    error: function(dado){
+                    console.log(dado);
+                }
+            });
         }
+    }
+    setInterval(verifica,400);
 };
-
-
-
 
 
 function questionario(codigo){
@@ -51,8 +53,23 @@ function timer(){
     var tempo = Number(document.querySelector("#temporizador").innerHTML);
     if(tempo != zero)
     document.querySelector("#temporizador").innerHTML = tempo -= 1;
+    else {
+        enviar();
+    }
 }
 
+const enviar = () =>{ 
+    var selecionado = $("[name=resposta]").val();
+    $.ajax({
+        type: 'post',
+        url: 'servidor/analisa-resposta.php',
+        data:{resposta : selecionado},
+        success: function(dado){
+            console.log(dado);
+        }
+
+    });
+};
 
 const sair = () =>{
     document.saida.submit();

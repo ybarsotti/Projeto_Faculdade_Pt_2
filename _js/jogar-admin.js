@@ -15,7 +15,7 @@ window.onload = function () {
             }
         })
     }
-        setInterval(att, 3000);
+        setInterval(att, 1000);
     };
 
 

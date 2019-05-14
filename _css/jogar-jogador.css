@@ -1,6 +1,10 @@
 @import url(jogar-admin.css);
 @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
 
+.container-fluid{
+    display: none;
+}
+
 .questao{
     color: rgb(0, 45, 248);
     font-size: 2.5rem;
@@ -11,6 +15,71 @@
 .temporizador{
     width: 100%;
 }
+
+.aguardando{
+    display: block;
+    position: absolute;
+    font-size: 1.5rem;
+    top: 10%;
+    margin-left: 40%; 
+    font-family: 'Luckiest Guy', cursive;   
+}
+
+#anim-two {
+    text-align: center;
+  }
+  #anim-two ul {
+    text-align: center;
+    list-style: none;
+  }
+  #anim-two ul li {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+    display: inline-block;
+    margin: 0 5px;
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+    -webkit-animation: bounce-balls 1.2s cubic-bezier(0.245, 0.325, 0.51, 1.305) infinite alternate;
+            animation: bounce-balls 1.2s cubic-bezier(0.245, 0.325, 0.51, 1.305) infinite alternate;
+  }
+  #anim-two ul li:nth-child(1) {
+    background: orange;
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+  }
+  #anim-two ul li:nth-child(2) {
+    background: coral;
+    -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s;
+  }
+  #anim-two ul li:nth-child(3) {
+    background: darksalmon;
+    -webkit-animation-delay: 0.8s;
+            animation-delay: 0.8s;
+  }
+  #anim-two ul li:nth-child(4) {
+    background: indianred;
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+  }
+  #anim-two ul li:nth-child(5) {
+    background: lightcoral;
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+  }
+  #anim-two ul li:nth-child(6) {
+    background: lightcoral;
+    -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s;
+  }
+  #anim-two ul li:nth-child(7) {
+    background: lightcoral;
+    -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+  }
+
 
 .tempo{
     height: 7rem;
@@ -137,3 +206,24 @@ input[type='radio']:checked + .col-resposta{
     background: rgba(214,59,101,.8);
 }
 
+
+/* Animacoes de loading */
+
+@keyframes bounce-balls {
+    30% {
+      -webkit-transform: translateY(-30px);
+              transform: translateY(-30px);
+    }
+    60% {
+      -webkit-transform: translateY(205px);
+              transform: translateY(205px);
+    }
+    80% {
+      -webkit-transform: translateY(190px);
+              transform: translateY(190px);
+    }
+    100% {
+      -webkit-transform: translateY(195px);
+              transform: translateY(195px);
+    }
+  }
