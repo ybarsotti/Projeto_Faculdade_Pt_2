@@ -1,11 +1,6 @@
 <?php 
     session_start();
     require("servidor/conexao.php");
-    $andamento = false;
-    // Variavel para receber quando inicializar o jogo pelo admin
-    if(isset($_POST['andamento'])){
-        $andamento = $_POST['andamento'];
-    }
 
     $codigosala = $_POST['codigo'];
 

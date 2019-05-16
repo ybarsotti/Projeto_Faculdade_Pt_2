@@ -27,16 +27,14 @@ const validar = () =>{
         document.querySelector('#codigo').classList.add('erro');
         return false;
     }else{
-        return verifica();
+        verifica();
     }
 }
 
 const verifica = () =>{
-    if(document.querySelector('#userid')){
+    if(document.querySelector('#userid').length == 0){
         document.querySelector('.envio-jogar').submit();
-    }
-
-    if(!document.querySelector('#userid')){
+    }else if(!document.querySelector('#userid').length != 0){
         document.querySelector('.text-center').innerHTML = "Insira o nickname";
         document.querySelector('#codigo').type = "hidden";
         

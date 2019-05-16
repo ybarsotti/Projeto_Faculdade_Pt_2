@@ -103,20 +103,63 @@
 }
 
 @media screen and (min-width: 992px){
+    
+.tempo span{
+    color: #fff;
+    font-size: 3.5rem;
+    line-height: 100px;
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 2px 0px 0px #000, 
+                 -2px 0px 0px #000, 
+                 0px 2px 0px #000, 
+                 0px -2px 0px #000;
+}
+
     .row-respostas{
-        height: 16rem ;
+        height: 14rem ;
     }
 }
 
-@media screen and (min-width: 768px){
+@media screen and (max-width: 1366px){
+
     .row-respostas{
-        height: 14rem;
+        height: 10rem;
     }
+
+    .tempo{
+        height: 4.5rem;
+        width: 4.5rem;
+        border-radius: 50%;
+        border: 3px solid black;
+        text-align: center;
+        vertical-align: middle;
+        background: rgb(72, 223, 80);
+    }
+
+    .questao{
+        color: rgb(0, 45, 248);
+        font-size: 2rem;
+        width: 80%;
+        border: 3px solid rgb(49, 69, 156);
+    }
+
+    .tempo span{
+        color: #fff;
+        font-size: 2.4rem;
+        line-height: 65px;
+        font-family: 'Luckiest Guy', cursive;
+        text-shadow: 2px 0px 0px #000, 
+                     -2px 0px 0px #000, 
+                     0px 2px 0px #000, 
+                     0px -2px 0px #000;
+    }
+    
+    
 }
 
 @media screen and (max-width: 767px){
     .row-respostas{
-        height: 12rem ;
+        height: 6rem ;
     }
 }
 
@@ -138,17 +181,6 @@
     }
 }
 
-
-.tempo span{
-    color: #fff;
-    font-size: 3.5rem;
-    line-height: 100px;
-    font-family: 'Luckiest Guy', cursive;
-    text-shadow: 2px 0px 0px #000, 
-                 -2px 0px 0px #000, 
-                 0px 2px 0px #000, 
-                 0px -2px 0px #000;
-}
 
 
 .col-resposta{
