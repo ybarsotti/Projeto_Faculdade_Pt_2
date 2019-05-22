@@ -1,5 +1,5 @@
 /* Carregar o loader*/
-
+/*
 document.getElementsByClassName("principal")[0].style.display = "none";
 
 window.addEventListener("load", function(){
@@ -7,7 +7,7 @@ window.addEventListener("load", function(){
             style.display = "block";
             document.querySelector('.loader')
             .style.display = "none";
-});
+});*/
 
 /* Transicao de cores */
 var cores = ['#803cd8', '#d33bd6', '#d63b65', '#d69d3b', '#d6d63b',
@@ -22,23 +22,32 @@ setInterval(() => {
 /* Validar input */
 
 const validar = () =>{
-    var senha = document.querySelector('#codigo').value;
-    if(senha == '' || senha==NaN){
+    var codigo = document.querySelector('#codigo').value;
+    if(codigo.length < 1 ){
         document.querySelector('#codigo').classList.add('erro');
-        return false;
-    }else{
+        document.querySelector('#codigo').focus();
+    }
+        if(codigo.length > 0 ){
         verifica();
     }
 }
 
 const verifica = () =>{
-    if(document.querySelector('#userid').length == 0){
+
+    if(document.querySelector('#userid') != null){
         document.querySelector('.envio-jogar').submit();
-    }else if(!document.querySelector('#userid').length != 0){
-        document.querySelector('.text-center').innerHTML = "Insira o nickname";
-        document.querySelector('#codigo').type = "hidden";
+    } else
+    novoUsuario();
         
-            if(!document.querySelector("input[name='nickname']")){
+}
+
+const novoUsuario = () =>{
+    
+    document.querySelector('.text-center').innerHTML = "Insira o nickname";
+    document.querySelector('#codigo').type = "hidden";
+    document.querySelector('.botao').setAttribute("onclick", "validaNick()");
+
+        if(!document.querySelector("input[name='nickname']")){
             var inpu = document.createElement("input");    
             inpu.setAttribute("type", "text");
             inpu.setAttribute("name", "nickname");
@@ -47,10 +56,12 @@ const verifica = () =>{
             inpu.setAttribute("minlength", 4);
             inpu.setAttribute("maxlength", 25);
             $(inpu).appendTo(document.querySelector("#nickinput"));
-        }
-
-            if(document.querySelector("input[name='nickname']").value != ''){
-                document.querySelector("input[name='nickname']").value.length < 4? alert("Digite pelo menos 4 caracteres.") : document.querySelector(".envio-jogar").submit(); 
-            }
     }
+}
+
+const validaNick = () =>{
+
+    document.querySelector("input[name='nickname']").value.length < 4? alert("Digite pelo menos 4 caracteres.") : document.querySelector(".envio-jogar").submit(); 
+
+
 }

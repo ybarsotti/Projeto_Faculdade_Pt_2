@@ -1,5 +1,8 @@
 <?php  
   session_start();
+  /*
+ Yuri Barsotti Mendes RA: 21095474 
+*/
   //Caso o usuário não esteja autenticado, limpa os dados e redireciona
   if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     //Destrói
@@ -81,7 +84,7 @@
                       <a class="dropdown-item" href="mudar-senha.php"><i class="fas fa-key"></i> Mudar senha</a>
                       <div class="dropdown-divider"></div>
                       <?php 
-                        echo '<a class="dropdown-item" href="logout.php?token='.md5(session_id()).'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>';
+                        echo '<a class="dropdown-item" href="servidor/logout.php?token='.md5(session_id()).'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>';
                       ?>
                     </div>
                 </div>

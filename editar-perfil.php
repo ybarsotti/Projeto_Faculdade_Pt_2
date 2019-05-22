@@ -1,5 +1,8 @@
 <?php  
 session_start();
+/*
+ Yuri Barsotti Mendes RA: 21095474 
+*/
 //Caso o usuário não esteja autenticado, limpa os dados e redireciona
 if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
 	//Destrói
@@ -54,7 +57,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
                       <a class="dropdown-item" href="editar-perfil.php"><i class="far fa-user"></i> Editar Perfil</a>
                       <a class="dropdown-item" href="mudar-senha.php"><i class="fas fa-key"></i> Mudar senha</a>
                       <div class="dropdown-divider"></div>
-                      <?php echo '<a class="dropdown-item" href="logout.php?token='. $_SESSION['token'] .'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>'; ?>
+                      <?php echo '<a class="dropdown-item" href="servidor/logout.php?token='. $_SESSION['token'] .'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>'; ?>
                     </div>
                 </div>
         </nav>
@@ -72,7 +75,7 @@ if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
 
         </div>
 
-        <form action='editarperfil.php' method="POST" onsubmit="return validar()">
+        <form action='servidor/editarperfil.php' method="POST" onsubmit="return validar()">
                 <div class="col col-lg-12 col-md-12 col-sm-12 mt-2 form-group div-perguntas">
                     <div class="form-row">
 

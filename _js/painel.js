@@ -16,7 +16,7 @@ const editarQuestionario = () =>{
 
 
 const excluirQuestionario = (row) =>{
-    document.querySelector('.fechar-modal').href = "apagarquestionario.php?id=" + row;
+    document.querySelector('.fechar-modal').href = "servidor/apagarquestionario.php?id=" + row;
 };
 
 const jogarQuestionario = (nomejogo) =>{

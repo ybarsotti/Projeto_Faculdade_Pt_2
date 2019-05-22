@@ -1,5 +1,8 @@
 <?php 
     session_start();
+    /*
+ Yuri Barsotti Mendes RA: 21095474 
+*/
     require("servidor/conexao.php");
 
     $codigosala = $_POST['codigo'];

@@ -1,5 +1,8 @@
 <?php  
 session_start();
+/*
+ Yuri Barsotti Mendes RA: 21095474 
+*/
     //Caso o usuário não esteja autenticado, limpa os dados e redireciona
     if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
         //Destrói
@@ -82,25 +85,34 @@ session_start();
             
             <div class="col text-center">
                 <div class="pergunta">
-                    <?php
-                        echo $pergunta['question'];
-                    ?>
-                    <hr>
+
                 </div>
+
+                <hr>
+
+                <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
+                    <div class="temporizador text-center">
+                        <div class="tempo mx-auto">
+                            <span id="temporizador"></span>
+                        </div>
+                    </div>
+                </div>
+    
             </div>
         </div>
 
         <div class="row">
             
-            <div class="col-11">
-                <img class="img-fluid" src="./_img/tabuleiro.jpeg" alt="">
+           <div class="col-8">
+              <!--  <img class="img-fluid" src="./_img/tabuleiro.jpeg" alt=""> -->  
             </div>
+            
             <div class="col users">
                 <table class="usuarios">
                 </table>
             </div>
 
-        </div>
+        </div> 
     </div>
 
 

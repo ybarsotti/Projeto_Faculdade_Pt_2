@@ -1,4 +1,7 @@
-<?php  session_start();?>
+<?php  session_start();
+/*
+ Yuri Barsotti Mendes RA: 21095474 
+*/?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +65,7 @@
             echo '<a class="dropdown-item" href="editar-perfil.php"><i class="far fa-user"></i> Editar Perfil</a>
                 <a class="dropdown-item" href="mudar-senha.php"><i class="fas fa-key"></i> Mudar senha</a>
                 <div class="dropdown-divider"></div> 
-                <a class="dropdown-item" href="logout.php?token='. $_SESSION['token'] .'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>
+                <a class="dropdown-item" href="servidor/logout.php?token='. $_SESSION['token'] .'"><i class="fas fa-sign-out-alt"></i> Deslogar</a>
             </div>
         </div>';
         }else{
@@ -71,7 +74,7 @@
                             <button type="button" id="btnMenu" data-toggle="dropdown" class="btn btn-link dropdown-toggle px-3 btn-login">Fazer Login<span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                                     <li class="px-3 py-2">
-                                        <form class="form" action="logar.php" method="POST">
+                                        <form class="form" action="servidor/logar.php" method="POST">
                                         <div class="form-group">
                                             <input id="usr" name="userName" placeholder="Usuario" class="form-control form-control-sm" type="text" required>
                                         </div>
@@ -121,7 +124,7 @@
 
             <div class="col col-lg-10 mx-auto text-center projeto-inner">
                 <h1 class="mb-3">O projeto</h1>
-                <h4>Nasceu como um projeto da Universidade Anhembi Morumbi, desenvolvido pelo grupo {H}.</h4>
+                <h4>Nasceu como um projeto da Universidade Anhembi Morumbi.</h4>
             </div>
 
         </div>

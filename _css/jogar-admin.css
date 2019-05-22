@@ -36,8 +36,88 @@ html{
     border-left: 1px black solid;
 }
 
-.usuarios tr td {
+.usuarios tr td{
     text-transform: capitalize;
     font-size: 1.3rem;
     color: rgb(0, 250, 33);
+}
+
+.usuarios tr th{
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    color: rgb(49, 201, 69);
+}
+
+.usuarios{
+    font-family: 'Luckiest Guy', cursive;
+    display: table;
+    border-spacing: 1.7rem .8rem;
+    border-collapse: separate;
+}
+
+hr{
+    display: none;
+}
+
+/* Temporizador */
+
+@media screen and (min-width: 992px){
+    
+    .tempo span{
+        color: #fff;
+        font-size: 3.5rem;
+        line-height: 100px;
+        font-family: 'Luckiest Guy', cursive;
+        text-shadow: 2px 0px 0px #000, 
+                     -2px 0px 0px #000, 
+                     0px 2px 0px #000, 
+                     0px -2px 0px #000;
+
+    }
+    
+
+    }
+    
+    @media screen and (max-width: 1366px){
+    
+        .tempo{
+            height: 4.5rem;
+            width: 4.5rem;
+            border-radius: 50%;
+            border: 3px solid black;
+            text-align: center;
+            vertical-align: middle;
+            background: rgb(72, 223, 80);
+            display: none;
+        }
+    
+    
+        .tempo span{
+            color: #fff;
+            font-size: 2.4rem;
+            line-height: 65px;
+            font-family: 'Luckiest Guy', cursive;
+            text-shadow: 2px 0px 0px #000, 
+                         -2px 0px 0px #000, 
+                         0px 2px 0px #000, 
+                         0px -2px 0px #000;
+                         
+        }
+        
+        
+    }
+
+.temporizador{
+    width: 100%;
+}
+
+.tempo{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    border: 3px solid black;
+    text-align: center;
+    vertical-align: middle;
+    background: rgb(72, 223, 80);
+    display: none;
 }

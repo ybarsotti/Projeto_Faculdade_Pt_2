@@ -1,4 +1,8 @@
-<?php  session_start(); ?>
+<?php  session_start(); 
+/*
+ Yuri Barsotti Mendes RA: 21095474 
+*/
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,17 +33,25 @@
             <div class="row align-items-center vh-90">
                 <div class="col col-lg-4 mx-auto mt-auto caixa-form">
                     <div class="form-group">
+
                         <form action="jogar-jogador.php" method="POST" class="envio-jogar">
+
                             <h2 class="text-center">Insira o código da sala</h2>
                             <div id="nickinput"></div>
                             <input type="text" name="codigo" id="codigo" placeholder='Código' class="form-control mb-1">
+
                             <?php 
+
                                 if(isset($_SESSION['userId'])){
                                     echo '<input type="hidden" name="userid" id="userid" value="'. $_SESSION['userId'] .'">';
                                 }
+
                             ?>
-                            <input type="button" value="Entrar" class="form-control" onclick="validar()">
+
+                            <button type="button" class="form-control botao" onclick="validar()">Entrar</button>
+
                         </form>
+
                     </div>
                 </div>
             </div>

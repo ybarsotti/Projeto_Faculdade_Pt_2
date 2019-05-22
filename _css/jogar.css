@@ -19,7 +19,7 @@ h2{
     flex-direction: column;
 }
 
-input[type='text'], input[type='button']{
+input[type='text'], .botao{
     width: 50%;
     float: center;
     margin: 0 auto;
@@ -33,17 +33,17 @@ input[type='text'], input[type='button']{
     animation: balanca 0.3s;
 }
 
-input[type='button']{
+.botao{
     background: #5f5c64;
     color: #fff;
     border: none;
 }
 
-input[type='button']:hover{
+.botao:hover{
     animation: balanca .3s;
 }
 
-input[type='button']:focus{
+.botao:focus{
     background: #aaa5b1;
 }
 

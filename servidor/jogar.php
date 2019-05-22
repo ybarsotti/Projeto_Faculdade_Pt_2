@@ -1,4 +1,7 @@
 <?php 
+/*
+ Yuri Barsotti Mendes RA: 21095474 
+*/
 require("conexao.php");
 
     class Query{

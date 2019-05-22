@@ -46,19 +46,7 @@ function questionario(codigo){
 };
 
 
-var tempo = setInterval(timer, 1000);
-
-function timer(){
-    var zero = 0;
-    var tempo = Number(document.querySelector("#temporizador").innerHTML);
-    if(tempo != zero)
-    document.querySelector("#temporizador").innerHTML = tempo -= 1;
-    else {
-        enviar();
-    }
-}
-
-const enviar = () =>{ 
+/*const enviar = () =>{ 
     var selecionado = $("[name=resposta]").val();
     $.ajax({
         type: 'post',
@@ -69,7 +57,7 @@ const enviar = () =>{
         }
 
     });
-};
+};*/
 
 const sair = () =>{
     document.saida.submit();
