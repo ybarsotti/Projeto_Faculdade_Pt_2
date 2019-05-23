@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Cache-control" content="no-cache">
     <title>Jogar - MetodoLOGICO</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" media="screen" href="_css/jogar.css">
@@ -16,7 +17,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="icon" type="image/jpg" href="https://img.icons8.com/metro/26/000000/dice.png" />
 </head>
-<body>
+<body onload="play()">
+
+<audio id="audio">
+   <source src="_sounds/jogar-fundo.mp3" type="audio/mp3" controls volume=".4" loop/>
+</audio>
 
 <noscript>
     <div class="alert alert-danger" role="alert">

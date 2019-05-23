@@ -50,6 +50,14 @@
 </head>
 <body <?php echo 'onload="verificaPartida('. $codigosala .')"'; ?>>
 
+<audio id="audio1">
+   <source src="_sounds/correct-buzzer.mp3" type="audio/mp3" controls volume=".4" loop/>
+</audio>
+
+<audio id="audio2">
+   <source src="_sounds/error-buzzer.mp3" type="audio/mp3" controls volume=".4" loop/>
+</audio>
+
 <noscript>
     <div class="alert alert-danger" role="alert">
         <h4 class="alert-heading">Ah não!</h4>
@@ -109,11 +117,6 @@
         <div class="row">
 
             <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
-                <div class="temporizador text-center">
-                    <div class="tempo mx-auto">
-                        <span id="temporizador" onclick="timer()"></span>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -125,7 +128,7 @@
         <form id="form-resposta">
             <div class="row mt-5 row-respostas">
 
-                <input type="radio" name="resposta" id="resposta-1" value="1">
+                <input type="radio" name="resposta" id="resposta-1" value="1" checked>
                 
                         <label for="resposta-1" class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-1"> 
                             <div class="resposta div-resposta-1">
@@ -145,18 +148,18 @@
 
             <div class="row row-respostas">
 
-                    <input type="radio" name="resposta" id="resposta-3">
+                    <input type="radio" name="resposta" id="resposta-3" value="3">
                          
                             <label for="resposta-3" class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-3"> 
-                                <div class="resposta div-resposta-3" value="3">
+                                <div class="resposta div-resposta-3" >
                                 
                                 </div>
                             </label>
                         
-                        <input type="radio" name="resposta" id="resposta-4">
+                        <input type="radio" name="resposta" id="resposta-4" value="4">
                   
                         <label for="resposta-4" class="col col-lg-6 col-md-6 col-sm-6 col-resposta col-resposta-4"> 
-                            <div class="resposta div-resposta-4" value="4">
+                            <div class="resposta div-resposta-4" >
                             
                             </div> 
                         </label>

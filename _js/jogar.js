@@ -65,3 +65,12 @@ const validaNick = () =>{
 
 
 }
+
+/* Musica fundo */
+
+audio = document.getElementById('audio');
+
+function play(){
+   audio.volume = 0.2;
+   audio.play();
+}

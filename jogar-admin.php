@@ -31,8 +31,6 @@ session_start();
     $pergunta = mysqli_query($con, $sql) or die('Erro de query: ' . mysqli_error($con));
     $pergunta = mysqli_fetch_assoc($pergunta);
 
-    //Valida se o jogo comecou
-    //require("servidor/inicia-jogo.php");
    
     //Limita acesso de aluno
     require('servidor/limitar-acesso.php');
@@ -109,6 +107,7 @@ session_start();
             
             <div class="col users">
                 <table class="usuarios">
+                    
                 </table>
             </div>
 
